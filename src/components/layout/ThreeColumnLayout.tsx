@@ -1,5 +1,6 @@
 import Sidebar from "./Sidebar";
 import TableOfContents from "./TableOfContents";
+import MobileTOC from "./MobileTOC";
 
 interface ThreeColumnLayoutProps {
   children: React.ReactNode;
@@ -21,6 +22,7 @@ export default function ThreeColumnLayout({ children }: ThreeColumnLayoutProps) 
           <TableOfContents />
         </div>
       </div>
+      <MobileTOC />
     </div>
   );
 }

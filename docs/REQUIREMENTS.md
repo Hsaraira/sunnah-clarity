@@ -22,7 +22,7 @@
 - [x] Left sidebar navigation (collapses to hamburger on mobile)
 - [x] Right sticky Table of Contents (hides behind floating button on mobile)
 - [x] Reading progress indicator (CSS-only)
-- [ ] Mobile-responsive at all breakpoints (needs polish)
+- [x] Mobile-responsive at all breakpoints (floating TOC button, bottom sheet, hamburger nav)
 
 ### Content Components
 - [x] HadithBlock (gold background, Arabic + translation, source citation)
@@ -31,7 +31,7 @@
 - [x] ScholarQuote (pull quote with attribution + Arabic text support)
 - [x] MadhabComparison (cross-madhab table with color-coded cells)
 - [x] SourceCard (SeekersGuidance "go deeper" link card)
-- [ ] ProgressiveDisclosure (3-tier: summary → detailed → sources)
+- [x] ProgressiveDisclosure (3-tier: summary → detailed → sources)
 - [x] DropCap for article openings
 - [x] GeometricPattern (SVG Islamic patterns at 3-8% opacity)
 - [x] SectionDivider (geometric pattern replacing generic `<hr>`)
@@ -70,7 +70,7 @@
 - [ ] Canonical URLs
 
 ### Analytics & Deploy
-- [ ] Privacy-respecting analytics (Plausible or Umami)
+- [x] Privacy-respecting analytics (Plausible — no cookies)
 - [x] Deploy to Vercel (https://sunnah-clarity.vercel.app)
 - [x] Verify full static export works
 - [ ] Custom domain setup

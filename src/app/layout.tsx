@@ -85,6 +85,12 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()`,
           }}
         />
+        <Script
+          defer
+          data-domain="sunnahclarity.org"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
