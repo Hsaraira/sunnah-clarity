@@ -54,6 +54,16 @@ Record architecture and design decisions here. Never leave rationale only in cha
 
 ---
 
+### Decision: AI may write content, user reviews for accuracy
+- **Date:** 2026-03-24
+- **Context:** Original plan required all theological content to be human-written. User decided they won't write content themselves and authorized AI to write it.
+- **Options considered:** (1) User writes all content, (2) AI writes content with user review, (3) Hire human authors
+- **Decision:** AI writes content referencing primary Islamic sources and SeekersGuidance. User reviews for accuracy.
+- **Rationale:** Practical necessity — the site needs content to be useful. Content still cites real primary sources (Quran, hadith, classical scholars) and links to SeekersGuidance for deeper study. User retains editorial control.
+- **Consequences:** Content integrity rule updated. All content should still cite verifiable sources and link to SeekersGuidance.
+
+---
+
 ### Decision: Navy + gold + green color palette
 - **Date:** 2026-03-24
 - **Context:** Needed a color system that is culturally resonant with Islamic visual tradition while feeling modern and trustworthy.
