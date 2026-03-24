@@ -20,8 +20,8 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 - MDX pipeline: @next/mdx with remark-gfm, remark-frontmatter, rehype-slug, rehype-autolink-headings
 - Content loading library (src/lib/content.ts) with frontmatter extraction and reading time
 - Dynamic routes: /topics/[slug] and /faq/[slug] with generateStaticParams
-- All 7 topic pages: Bid'a, Mawlid, Dhikr, Tasawwuf, Madhabs, Isnad, Scholarly Tradition
-- All 5 FAQ pages: What is bid'a, Is mawlid haram, Is sufism allowed, Do I need a madhab, Is group dhikr permissible
+- All 7 topic pages with full content: Bid'a, Mawlid, Dhikr, Tasawwuf, Madhabs, Isnad, Scholarly Tradition
+- All 11 FAQ pages with full content: What is bid'a, Is mawlid haram, Is sufism allowed, Do I need a madhab, Is group dhikr permissible, Is tawassul shirk, Why do scholars differ, What is ihsan, Is taqlid allowed, Can you visit graves, Is salawat a bid'a
 - About page with editorial methodology and SeekersGuidance credit
 - Custom 404 page
 - Pagefind static search with custom dialog (Ctrl+K)
@@ -42,9 +42,9 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 ## What's next
 
-- Human-written content to replace scaffold text in topic hubs and FAQs
 - Custom domain setup (sunnahclarity.org)
-- Self-hosted WOFF2 fonts (currently using next/font/google, which is functional)
+- Self-hosted WOFF2 fonts (optional — next/font/google works well)
+- Additional FAQ entries as new questions arise
 
 ## Blockers
 
@@ -54,6 +54,7 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 | Date | What changed | Files touched |
 |------|-------------|---------------|
+| 2026-03-24 | Full content for all topics and FAQs, 6 new FAQ entries, nav updates | 15+ files |
 | 2026-03-24 | FAQ index, canonical URLs, progress bar, Framer Motion hero, polish | 10+ files |
 | 2026-03-24 | All content pages, ProgressiveDisclosure, MobileTOC, 404, Plausible analytics | 15+ files |
 | 2026-03-24 | About page, Pagefind search, SEO (sitemap, robots.txt, JSON-LD), Vercel deploy | 11 files |

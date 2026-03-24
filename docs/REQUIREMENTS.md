@@ -36,22 +36,27 @@
 - [x] GeometricPattern (SVG Islamic patterns at 3-8% opacity)
 - [x] SectionDivider (geometric pattern replacing generic `<hr>`)
 
-### Content Pages (human-written content required)
-- [~] 5-7 topic hub pages with progressive disclosure
-  - [ ] Bid'a (Innovation)
-  - [ ] Mawlid
-  - [ ] Dhikr
-  - [ ] Tasawwuf / Sufism
-  - [ ] Madhabs (Schools of Thought)
-  - [ ] Chains of Narration (Isnad/Silsila)
-  - [ ] Scholars & Scholarly Tradition
-- [ ] 10-15 FAQ entries (SEO entry points)
-  - [ ] Is mawlid haram?
-  - [ ] Is sufism allowed in Islam?
-  - [ ] Do I need to follow a madhab?
-  - [ ] What is bid'a in Islam?
-  - [ ] Is group dhikr permissible?
-  - [ ] (5-10 more to be determined)
+### Content Pages
+- [x] 7 topic hub pages with full content
+  - [x] Bid'a (Innovation)
+  - [x] Mawlid
+  - [x] Dhikr
+  - [x] Tasawwuf / Sufism
+  - [x] Madhabs (Schools of Thought)
+  - [x] Chains of Narration (Isnad/Silsila)
+  - [x] Scholars & Scholarly Tradition
+- [x] 11 FAQ entries (SEO entry points)
+  - [x] Is mawlid haram?
+  - [x] Is sufism allowed in Islam?
+  - [x] Do I need to follow a madhab?
+  - [x] What is bid'a in Islam?
+  - [x] Is group dhikr permissible?
+  - [x] Is tawassul (seeking intercession) shirk?
+  - [x] Why do Islamic scholars differ?
+  - [x] What is ihsan?
+  - [x] Is taqlid (following a scholar) allowed?
+  - [x] Can you visit graves in Islam?
+  - [x] Is reciting salawat a bid'a?
 - [x] About page with editorial methodology and SeekersGuidance credit
 
 ### MDX Pipeline

@@ -88,6 +88,18 @@ const faqs = [
     question: "What is bid'a in Islam?",
     href: "/faq/what-is-bidah",
   },
+  {
+    question: "Is tawassul (seeking intercession) shirk?",
+    href: "/faq/is-tawassul-shirk",
+  },
+  {
+    question: "Why do Islamic scholars differ?",
+    href: "/faq/why-do-scholars-differ",
+  },
+  {
+    question: "What is ihsan?",
+    href: "/faq/what-is-ihsan",
+  },
 ];
 
 export default function Home() {

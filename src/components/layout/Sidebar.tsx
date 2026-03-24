@@ -19,6 +19,12 @@ const faqs = [
   { label: "Do I need a madhab?", href: "/faq/do-i-need-a-madhab" },
   { label: "Is group dhikr permissible?", href: "/faq/is-group-dhikr-permissible" },
   { label: "What is bid'a?", href: "/faq/what-is-bidah" },
+  { label: "Is tawassul shirk?", href: "/faq/is-tawassul-shirk" },
+  { label: "Why do scholars differ?", href: "/faq/why-do-scholars-differ" },
+  { label: "What is ihsan?", href: "/faq/what-is-ihsan" },
+  { label: "Is taqlid allowed?", href: "/faq/is-taqlid-allowed" },
+  { label: "Can you visit graves?", href: "/faq/can-you-visit-graves" },
+  { label: "Is salawat a bid'a?", href: "/faq/is-salawat-bidah" },
 ];
 
 export default function Sidebar() {
