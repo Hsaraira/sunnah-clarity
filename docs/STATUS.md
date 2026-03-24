@@ -28,6 +28,11 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 - SEO: sitemap.xml, robots.txt, JSON-LD structured data
 - Plausible analytics (privacy-respecting, no cookies)
 - Mobile: floating TOC button with bottom sheet, hamburger nav
+- FAQ index page (/faq) listing all questions with topic badges
+- Canonical URLs via metadataBase + per-page alternates
+- Reading progress bar on article pages (CSS scroll-driven animation)
+- Framer Motion hero animation (LazyMotion, ~5KB)
+- Custom 404 page
 - Deployed to Vercel: https://sunnah-clarity.vercel.app
 - GitHub auto-deploy on push
 
@@ -40,7 +45,6 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 - Human-written content to replace scaffold text in topic hubs and FAQs
 - Custom domain setup (sunnahclarity.org)
 - Self-hosted WOFF2 fonts (currently using next/font/google, which is functional)
-- Canonical URLs
 
 ## Blockers
 
@@ -50,6 +54,7 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 | Date | What changed | Files touched |
 |------|-------------|---------------|
+| 2026-03-24 | FAQ index, canonical URLs, progress bar, Framer Motion hero, polish | 10+ files |
 | 2026-03-24 | All content pages, ProgressiveDisclosure, MobileTOC, 404, Plausible analytics | 15+ files |
 | 2026-03-24 | About page, Pagefind search, SEO (sitemap, robots.txt, JSON-LD), Vercel deploy | 11 files |
 | 2026-03-24 | Dark mode toggle, MDX pipeline, ThreeColumnLayout, Sidebar, TOC, content routes | 18+ files |

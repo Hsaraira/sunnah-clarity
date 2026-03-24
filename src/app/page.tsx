@@ -6,6 +6,7 @@ import GeometricPattern from "@/components/decorative/GeometricPattern";
 import TopicCard from "@/components/content/TopicCard";
 import FAQLink from "@/components/content/FAQLink";
 import JsonLd, { websiteJsonLd } from "@/components/seo/JsonLd";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const topics = [
   {
@@ -102,7 +103,7 @@ export default function Home() {
           style={{ background: "var(--bg-primary)" }}
         >
           <GeometricPattern opacity={0.04} />
-          <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <p
               className="text-sm font-medium uppercase tracking-widest mb-4"
               style={{ color: "var(--color-accent)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
@@ -150,7 +151,7 @@ export default function Home() {
                 Our Methodology
               </Link>
             </div>
-          </div>
+          </AnimatedSection>
         </section>
 
         <SectionDivider />

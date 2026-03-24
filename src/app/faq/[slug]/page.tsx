@@ -24,6 +24,9 @@ export async function generateMetadata({
   return {
     title: faq.frontmatter.question,
     description: `${faq.frontmatter.question} — answered clearly with scholarly evidence from the traditional Sunni perspective.`,
+    alternates: {
+      canonical: `/faq/${slug}`,
+    },
     openGraph: {
       title: faq.frontmatter.question,
       description: `${faq.frontmatter.question} — answered clearly with scholarly evidence.`,
@@ -47,6 +50,7 @@ export default async function FAQPage({
 
   return (
     <>
+      <div id="reading-progress" />
       <JsonLd
         data={articleJsonLd({
           title: faq.frontmatter.question,

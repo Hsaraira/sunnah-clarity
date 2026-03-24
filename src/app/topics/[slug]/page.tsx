@@ -24,6 +24,9 @@ export async function generateMetadata({
   return {
     title: topic.frontmatter.title,
     description: topic.frontmatter.description,
+    alternates: {
+      canonical: `/topics/${slug}`,
+    },
     openGraph: {
       title: topic.frontmatter.title,
       description: topic.frontmatter.description,
@@ -47,6 +50,7 @@ export default async function TopicPage({
 
   return (
     <>
+      <div id="reading-progress" />
       <JsonLd
         data={articleJsonLd({
           title: topic.frontmatter.title,

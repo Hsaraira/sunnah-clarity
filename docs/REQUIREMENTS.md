@@ -67,7 +67,7 @@
 - [x] Schema.org Article structured data (JSON-LD)
 - [x] XML sitemap (auto-generated at build)
 - [x] robots.txt
-- [ ] Canonical URLs
+- [x] Canonical URLs (metadataBase + per-page alternates)
 
 ### Analytics & Deploy
 - [x] Privacy-respecting analytics (Plausible — no cookies)

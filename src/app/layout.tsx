@@ -32,6 +32,10 @@ const amiri = Amiri({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sunnahclarity.org"),
+  alternates: {
+    canonical: "./",
+  },
   title: {
     default: "Sunnah Clarity — Traditional Islam, Clearly Explained",
     template: "%s | Sunnah Clarity",
