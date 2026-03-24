@@ -36,8 +36,8 @@
 - [x] GeometricPattern (SVG Islamic patterns at 3-8% opacity)
 - [x] SectionDivider (geometric pattern replacing generic `<hr>`)
 
-### Content Pages
-- [ ] 5-7 topic hub pages with progressive disclosure
+### Content Pages (human-written content required)
+- [~] 5-7 topic hub pages with progressive disclosure
   - [ ] Bid'a (Innovation)
   - [ ] Mawlid
   - [ ] Dhikr
@@ -52,7 +52,7 @@
   - [ ] What is bid'a in Islam?
   - [ ] Is group dhikr permissible?
   - [ ] (5-10 more to be determined)
-- [ ] About page with editorial methodology and SeekersGuidance credit
+- [x] About page with editorial methodology and SeekersGuidance credit
 
 ### MDX Pipeline
 - [x] MDX processing with frontmatter extraction
@@ -61,18 +61,18 @@
 - [x] Custom MDX components mapped to content components
 
 ### Search & SEO
-- [ ] Pagefind static search (post-build CLI step)
-- [ ] Search dialog/modal UI
-- [ ] Meta tags (title, description, og:image)
-- [ ] Schema.org Article structured data
-- [ ] XML sitemap (auto-generated at build)
-- [ ] robots.txt
+- [x] Pagefind static search (post-build CLI step)
+- [x] Search dialog/modal UI (Ctrl+K shortcut)
+- [x] Meta tags (title, description, og:image)
+- [x] Schema.org Article structured data (JSON-LD)
+- [x] XML sitemap (auto-generated at build)
+- [x] robots.txt
 - [ ] Canonical URLs
 
 ### Analytics & Deploy
 - [ ] Privacy-respecting analytics (Plausible or Umami)
-- [ ] Deploy to Vercel
-- [ ] Verify full static export works
+- [x] Deploy to Vercel (https://sunnah-clarity.vercel.app)
+- [x] Verify full static export works
 - [ ] Custom domain setup
 
 ## Phase 2: Expansion (Deferred)
