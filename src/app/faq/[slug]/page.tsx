@@ -63,10 +63,11 @@ export default async function FAQPage({
         <article>
           <header className="mb-10">
             <p
-              className="text-sm font-medium uppercase tracking-widest mb-2"
+              className="text-sm mb-2"
               style={{
                 color: "var(--color-accent)",
-                fontFamily: "var(--font-inter), system-ui, sans-serif",
+                fontFamily: "var(--font-newsreader), Georgia, serif",
+                fontStyle: "italic",
               }}
             >
               Frequently Asked Question

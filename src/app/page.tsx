@@ -15,7 +15,6 @@ const topics = [
     description:
       "What bid'a actually means, the distinction between praiseworthy and blameworthy innovation, and why the blanket \"everything is bid'a\" narrative misrepresents the scholarly tradition.",
     href: "/topics/bidah",
-    icon: "📖",
   },
   {
     title: "Mawlid",
@@ -23,7 +22,6 @@ const topics = [
     description:
       "The permissibility of celebrating the Prophet's birth, with evidence from all four schools of thought and the classical scholarly consensus.",
     href: "/topics/mawlid",
-    icon: "🌙",
   },
   {
     title: "Dhikr",
@@ -31,7 +29,6 @@ const topics = [
     description:
       "The permissibility and virtue of individual and collective remembrance of Allah, including the evidence for group dhikr gatherings.",
     href: "/topics/dhikr",
-    icon: "📿",
   },
   {
     title: "Tasawwuf",
@@ -39,7 +36,6 @@ const topics = [
     description:
       "What Sufism actually is within orthodox Sunni Islam — the science of ihsan, purification of the heart, and drawing closer to Allah.",
     href: "/topics/tasawwuf",
-    icon: "💎",
   },
   {
     title: "Madhabs",
@@ -47,7 +43,6 @@ const topics = [
     description:
       "Why following a madhab is the traditional and scholarly approach, what each school represents, and why direct interpretation without methodology is problematic.",
     href: "/topics/madhabs",
-    icon: "⚖️",
   },
   {
     title: "Chains of Narration",
@@ -55,7 +50,6 @@ const topics = [
     description:
       "How Islamic knowledge is transmitted through unbroken chains back to the Prophet \uFDFA, the concept of ijaza, and spiritual lineages.",
     href: "/topics/isnad",
-    icon: "🔗",
   },
   {
     title: "The Scholarly Tradition",
@@ -63,7 +57,6 @@ const topics = [
     description:
       "Profiles of major scholars, their contributions to Islamic sciences, and why the scholarly tradition is the backbone of authentic Islam.",
     href: "/topics/scholarly-tradition",
-    icon: "🏛️",
   },
 ];
 
@@ -117,8 +110,8 @@ export default function Home() {
           <GeometricPattern opacity={0.04} />
           <AnimatedSection className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <p
-              className="text-sm font-medium uppercase tracking-widest mb-4"
-              style={{ color: "var(--color-accent)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+              className="text-sm mb-4"
+              style={{ color: "var(--color-accent)", fontFamily: "var(--font-newsreader), Georgia, serif", fontStyle: "italic", letterSpacing: "0.02em" }}
             >
               Traditional Sunni Islam
             </p>
@@ -228,7 +221,6 @@ export default function Home() {
         {/* Daily Dhikr CTA */}
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-3xl mb-4" aria-hidden="true">📿</p>
             <h2
               className="text-2xl sm:text-3xl font-bold mb-4"
               style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}

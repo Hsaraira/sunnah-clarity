@@ -9,9 +9,9 @@ interface ProgressiveDisclosureProps {
 }
 
 const tiers = [
-  { key: "summary", label: "Summary", icon: "1" },
-  { key: "detailed", label: "Detailed", icon: "2" },
-  { key: "sources", label: "Sources", icon: "3" },
+  { key: "summary", label: "Summary" },
+  { key: "detailed", label: "Detailed" },
+  { key: "sources", label: "Sources" },
 ] as const;
 
 type Tier = (typeof tiers)[number]["key"];
@@ -35,7 +35,7 @@ export default function ProgressiveDisclosure({
 
   return (
     <div
-      className="my-8 rounded-lg overflow-hidden"
+      className="my-8"
       style={{ border: "1px solid var(--border-default)" }}
     >
       <div
@@ -49,7 +49,7 @@ export default function ProgressiveDisclosure({
           <button
             key={tier.key}
             onClick={() => setActiveTier(tier.key)}
-            className="flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors relative"
+            className="px-4 py-3 text-sm transition-colors"
             style={{
               fontFamily: "var(--font-inter), system-ui, sans-serif",
               color:
@@ -58,23 +58,12 @@ export default function ProgressiveDisclosure({
                   : "var(--text-muted)",
               background:
                 activeTier === tier.key ? "var(--bg-primary)" : "transparent",
+              borderBottom:
+                activeTier === tier.key
+                  ? "2px solid var(--color-primary)"
+                  : "2px solid transparent",
             }}
           >
-            <span
-              className="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold"
-              style={{
-                background:
-                  activeTier === tier.key
-                    ? "var(--color-primary)"
-                    : "var(--border-default)",
-                color:
-                  activeTier === tier.key
-                    ? "#fff"
-                    : "var(--text-muted)",
-              }}
-            >
-              {tier.icon}
-            </span>
             {tier.label}
           </button>
         ))}

@@ -276,10 +276,11 @@ export default function DailyDhikrPage() {
           <GeometricPattern opacity={0.04} />
           <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
             <p
-              className="text-sm font-medium uppercase tracking-widest mb-2"
+              className="text-sm mb-2"
               style={{
                 color: "var(--color-accent)",
-                fontFamily: "var(--font-inter), system-ui, sans-serif",
+                fontFamily: "var(--font-newsreader), Georgia, serif",
+                fontStyle: "italic",
               }}
             >
               Remembrance of Allah

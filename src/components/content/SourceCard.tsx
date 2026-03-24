@@ -11,48 +11,34 @@ export default function SourceCard({ title, url, source, description }: SourceCa
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="card-interactive block rounded-lg p-4 no-underline"
-      style={{ background: "var(--bg-surface)" }}
+      className="card-interactive block p-4 no-underline"
+      style={{ borderLeft: "3px solid var(--color-secondary)" }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex-1 min-w-0">
-          <p
-            className="text-sm font-medium truncate"
-            style={{ color: "var(--color-primary)" }}
-          >
-            {title}
-          </p>
-          {source && (
-            <p
-              className="text-xs mt-0.5"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              {source}
-            </p>
-          )}
-          {description && (
-            <p
-              className="text-xs mt-1 line-clamp-2"
-              style={{ color: "var(--text-muted)" }}
-            >
-              {description}
-            </p>
-          )}
-        </div>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="flex-shrink-0 mt-0.5"
-          style={{ color: "var(--text-muted)" }}
-          aria-hidden="true"
+      <p
+        className="text-sm font-medium"
+        style={{ color: "var(--color-primary)" }}
+      >
+        {title}
+      </p>
+      {source && (
+        <p
+          className="text-xs mt-0.5"
+          style={{ color: "var(--text-secondary)" }}
         >
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-        </svg>
-      </div>
+          {source}
+        </p>
+      )}
+      {description && (
+        <p
+          className="text-xs mt-1"
+          style={{
+            color: "var(--text-muted)",
+            fontFamily: "var(--font-newsreader), Georgia, serif",
+          }}
+        >
+          {description}
+        </p>
+      )}
     </a>
   );
 }
@@ -65,10 +51,14 @@ export function SourceCardGroup({ children }: SourceCardGroupProps) {
   return (
     <div className="my-8">
       <p
-        className="text-xs font-semibold uppercase tracking-wider mb-3"
-        style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+        className="text-xs mb-3"
+        style={{
+          color: "var(--text-muted)",
+          fontFamily: "var(--font-inter), system-ui, sans-serif",
+          fontStyle: "italic",
+        }}
       >
-        Learn More from Qualified Scholars
+        Learn more from qualified scholars
       </p>
       <div className="grid gap-3 sm:grid-cols-2">{children}</div>
     </div>

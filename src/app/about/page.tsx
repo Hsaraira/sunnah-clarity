@@ -46,10 +46,11 @@ export default function AboutPage() {
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <p
-              className="text-sm font-medium uppercase tracking-widest mb-2"
+              className="text-sm mb-2"
               style={{
                 color: "var(--color-accent)",
-                fontFamily: "var(--font-inter), system-ui, sans-serif",
+                fontFamily: "var(--font-newsreader), Georgia, serif",
+                fontStyle: "italic",
               }}
             >
               About This Project

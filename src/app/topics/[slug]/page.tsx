@@ -63,10 +63,11 @@ export default async function TopicPage({
         <article>
           <header className="mb-10">
             <p
-              className="text-sm font-medium uppercase tracking-widest mb-2"
+              className="text-sm mb-2"
               style={{
                 color: "var(--color-accent)",
-                fontFamily: "var(--font-inter), system-ui, sans-serif",
+                fontFamily: "var(--font-newsreader), Georgia, serif",
+                fontStyle: "italic",
               }}
             >
               {topic.frontmatter.subtitle}
