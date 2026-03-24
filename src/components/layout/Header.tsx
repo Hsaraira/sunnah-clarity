@@ -12,7 +12,7 @@ const topics = [
   { label: "Tasawwuf", href: "/topics/tasawwuf" },
   { label: "Madhabs", href: "/topics/madhabs" },
   { label: "Isnad", href: "/topics/isnad" },
-  { label: "Scholars", href: "/topics/scholarly-tradition" },
+  { label: "Tradition", href: "/topics/scholarly-tradition" },
 ];
 
 export default function Header() {
@@ -45,6 +45,13 @@ export default function Header() {
                 {topic.label}
               </Link>
             ))}
+            <Link
+              href="/scholars"
+              className="nav-link-hover ml-1 px-3 py-2 text-sm font-medium rounded-md no-underline"
+              style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+            >
+              Scholars
+            </Link>
             <Link
               href="/dhikr/daily"
               className="nav-link-hover ml-1 px-3 py-2 text-sm font-medium rounded-md no-underline"
@@ -96,6 +103,14 @@ export default function Header() {
                   {topic.label}
                 </Link>
               ))}
+              <Link
+                href="/scholars"
+                className="px-3 py-2 text-sm font-medium rounded-md no-underline"
+                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+                onClick={() => setMobileOpen(false)}
+              >
+                Scholars
+              </Link>
               <Link
                 href="/dhikr/daily"
                 className="px-3 py-2 text-sm font-medium rounded-md no-underline"

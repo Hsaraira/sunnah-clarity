@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getAllTopicSlugs, getAllFAQSlugs } from "@/lib/content";
+import {
+  getAllTopicSlugs,
+  getAllFAQSlugs,
+  getAllScholarSlugs,
+} from "@/lib/content";
 
 export const dynamic = "force-static";
 
@@ -8,6 +12,7 @@ const BASE_URL = "https://sunnahclarity.org";
 export default function sitemap(): MetadataRoute.Sitemap {
   const topicSlugs = getAllTopicSlugs();
   const faqSlugs = getAllFAQSlugs();
+  const scholarSlugs = getAllScholarSlugs();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -21,6 +26,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/scholars`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${BASE_URL}/dhikr/daily`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.75,
     },
   ];
 
@@ -38,5 +55,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...topicPages, ...faqPages];
+  const scholarPages: MetadataRoute.Sitemap = scholarSlugs.map((slug) => ({
+    url: `${BASE_URL}/scholars/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }));
+
+  return [...staticPages, ...topicPages, ...faqPages, ...scholarPages];
 }

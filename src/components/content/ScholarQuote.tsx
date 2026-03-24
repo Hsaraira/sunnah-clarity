@@ -1,5 +1,9 @@
+import Link from "next/link";
+
 interface ScholarQuoteProps {
   scholar: string;
+  /** When set, the attribution links to `/scholars/[slug]`. */
+  scholarSlug?: string;
   title?: string;
   dates?: string;
   source?: string;
@@ -10,6 +14,7 @@ interface ScholarQuoteProps {
 
 export default function ScholarQuote({
   scholar,
+  scholarSlug,
   title,
   dates,
   source,
@@ -45,7 +50,18 @@ export default function ScholarQuote({
       )}
       <footer className="mt-3">
         <span className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
-          — {scholar}
+          —{" "}
+          {scholarSlug ? (
+            <Link
+              href={`/scholars/${scholarSlug}`}
+              className="no-underline hover:underline"
+              style={{ color: "var(--color-primary)" }}
+            >
+              {scholar}
+            </Link>
+          ) : (
+            scholar
+          )}
         </span>
         {title && (
           <span className="text-sm" style={{ color: "var(--text-secondary)" }}>

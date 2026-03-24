@@ -10,7 +10,7 @@ const topics = [
   { label: "Tasawwuf", href: "/topics/tasawwuf" },
   { label: "Madhabs", href: "/topics/madhabs" },
   { label: "Isnad", href: "/topics/isnad" },
-  { label: "Scholars", href: "/topics/scholarly-tradition" },
+  { label: "Tradition", href: "/topics/scholarly-tradition" },
 ];
 
 const faqs = [
@@ -92,7 +92,24 @@ export default function Sidebar() {
         </ul>
       </div>
 
-      <div>
+      <div className="space-y-2">
+        <Link
+          href="/scholars"
+          className="block py-2 px-3 text-sm font-medium rounded-md no-underline transition-colors"
+          style={{
+            fontFamily: "var(--font-inter), system-ui, sans-serif",
+            color: pathname === "/scholars" || pathname.startsWith("/scholars/")
+              ? "var(--color-primary)"
+              : "var(--text-secondary)",
+            background:
+              pathname === "/scholars" || pathname.startsWith("/scholars/")
+                ? "var(--bg-surface)"
+                : "transparent",
+            fontWeight: pathname === "/scholars" || pathname.startsWith("/scholars/") ? 600 : 500,
+          }}
+        >
+          Scholar profiles
+        </Link>
         <Link
           href="/dhikr/daily"
           className="block py-2 px-3 text-sm font-medium rounded-md no-underline transition-colors"

@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 interface MisconceptionBlockProps {
-  claim: string;
-  response: string;
+  claim: ReactNode;
+  response: ReactNode;
 }
 
 export default function MisconceptionBlock({

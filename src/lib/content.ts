@@ -31,6 +31,20 @@ export interface FAQFrontmatter {
   status: "draft" | "review" | "published";
 }
 
+export interface ScholarFrontmatter {
+  title: string;
+  slug: string;
+  subtitle: string;
+  description: string;
+  dates?: string;
+  madhhab?: string;
+  primarySources: string[];
+  author: string;
+  reviewedBy: string;
+  reviewDate: string;
+  status: "draft" | "review" | "published";
+}
+
 export interface ContentMeta<T> {
   frontmatter: T;
   content: string;
@@ -99,4 +113,30 @@ export function getAllFAQs(): ContentMeta<FAQFrontmatter>[] {
   return getContentFiles("faq")
     .map((f) => parseContentFile<FAQFrontmatter>("faq", f))
     .filter((faq) => faq.frontmatter.status === "published");
+}
+
+export function getAllScholarSlugs(): string[] {
+  return getContentFiles("scholars").map((f) =>
+    f.replace(/\.mdx?$/, "")
+  );
+}
+
+export function getScholarBySlug(
+  slug: string
+): ContentMeta<ScholarFrontmatter> | null {
+  const files = getContentFiles("scholars");
+  const match = files.find(
+    (f) => f.replace(/\.mdx?$/, "") === slug
+  );
+  if (!match) return null;
+  return parseContentFile<ScholarFrontmatter>("scholars", match);
+}
+
+export function getAllScholars(): ContentMeta<ScholarFrontmatter>[] {
+  return getContentFiles("scholars")
+    .map((f) => parseContentFile<ScholarFrontmatter>("scholars", f))
+    .filter((s) => s.frontmatter.status === "published")
+    .sort((a, b) =>
+      a.frontmatter.title.localeCompare(b.frontmatter.title, "en")
+    );
 }
