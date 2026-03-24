@@ -46,8 +46,15 @@ export default function Header() {
               </Link>
             ))}
             <Link
+              href="/dhikr/daily"
+              className="nav-link-hover ml-1 px-3 py-2 text-sm font-medium rounded-md no-underline"
+              style={{ color: "var(--color-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+            >
+              Daily Dhikr
+            </Link>
+            <Link
               href="/about"
-              className="ml-2 px-3 py-2 text-sm font-medium rounded-md transition-colors no-underline"
+              className="ml-1 px-3 py-2 text-sm font-medium rounded-md transition-colors no-underline"
               style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
             >
               About
@@ -89,6 +96,14 @@ export default function Header() {
                   {topic.label}
                 </Link>
               ))}
+              <Link
+                href="/dhikr/daily"
+                className="px-3 py-2 text-sm font-medium rounded-md no-underline"
+                style={{ color: "var(--color-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+                onClick={() => setMobileOpen(false)}
+              >
+                Daily Dhikr
+              </Link>
               <Link
                 href="/about"
                 className="px-3 py-2 text-sm font-medium rounded-md no-underline"

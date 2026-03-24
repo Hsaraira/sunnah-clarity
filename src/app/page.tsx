@@ -225,6 +225,42 @@ export default function Home() {
 
         <SectionDivider />
 
+        {/* Daily Dhikr CTA */}
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-3xl mb-4" aria-hidden="true">📿</p>
+            <h2
+              className="text-2xl sm:text-3xl font-bold mb-4"
+              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            >
+              Daily Dhikr Guide
+            </h2>
+            <p
+              className="text-base leading-relaxed mb-6 max-w-lg mx-auto"
+              style={{
+                fontFamily: "var(--font-newsreader), Georgia, serif",
+                color: "var(--text-secondary)",
+              }}
+            >
+              The complete collection of prophetic morning and evening adhkar — with Arabic text,
+              English translation, repetition counts, and hadith-sourced benefits.
+            </p>
+            <Link
+              href="/dhikr/daily"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium no-underline transition-opacity"
+              style={{
+                background: "var(--color-secondary)",
+                color: "#fff",
+                fontFamily: "var(--font-inter), system-ui, sans-serif",
+              }}
+            >
+              Start Your Daily Dhikr
+            </Link>
+          </div>
+        </section>
+
+        <SectionDivider />
+
         {/* Methodology Note */}
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">

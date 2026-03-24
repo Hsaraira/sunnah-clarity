@@ -91,6 +91,21 @@ export default function Sidebar() {
           })}
         </ul>
       </div>
+
+      <div>
+        <Link
+          href="/dhikr/daily"
+          className="block py-2 px-3 text-sm font-medium rounded-md no-underline transition-colors"
+          style={{
+            fontFamily: "var(--font-inter), system-ui, sans-serif",
+            color: pathname === "/dhikr/daily" ? "#fff" : "var(--color-secondary)",
+            background: pathname === "/dhikr/daily" ? "var(--color-secondary)" : "color-mix(in srgb, var(--color-secondary) 8%, transparent)",
+            fontWeight: 600,
+          }}
+        >
+          Daily Dhikr Guide
+        </Link>
+      </div>
     </aside>
   );
 }
