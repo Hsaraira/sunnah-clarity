@@ -1,0 +1,40 @@
+---
+description: Project identity and context. Loaded on every interaction.
+alwaysApply: true
+---
+
+# Sunnah Clarity — Project Context
+
+## What this is
+
+A modern, statically-generated website that explains traditional Sunni Islamic concepts to English-speaking laypeople — specifically topics frequently misunderstood or attacked by Wahhabi/Salafi-leaning voices. Covers bid'a, mawlid, dhikr, tasawwuf, madhabs, chains of narration, and the scholarly tradition. All content is original human-written text citing primary Islamic sources, with SeekersGuidance.org linked as "go deeper" references. Non-commercial, purely informative.
+
+## Tech stack
+
+- **Framework:** Next.js 15 (App Router) with full static export (`output: 'export'`)
+- **Hosting:** Vercel (free tier)
+- **Content:** MDX files in Git repository
+- **CMS:** Keystatic (deferred to v2 — direct MDX editing for v1)
+- **Search:** Pagefind (static client-side search)
+- **Styling:** Tailwind CSS 4 + `@tailwindcss/typography`
+- **Components:** shadcn/ui (selective: accordion, tabs, dialog, tooltip, sheet)
+- **Animation:** Framer Motion (selective, LazyMotion ~5KB)
+- **Analytics:** Plausible or Umami (privacy-respecting)
+- **Fonts:** Newsreader (body), Playfair Display (headings), Amiri (Arabic), Inter (UI)
+
+## Key files
+
+- `docs/STATUS.md` — current project state (check FIRST every session)
+- `docs/ARCHITECTURE.md` — system design and data flow
+- `docs/DECISIONS.md` — why we chose what we chose
+- `docs/REQUIREMENTS.md` — feature list and acceptance criteria
+- `.cursor/rules/` — agent behavior rules
+- `.cursor/prompts/` — review agent prompts (Reviewer, Security, QA) used by Cloud Agents
+
+## Architecture summary
+
+Content flows: Human writes MDX → Git commit → GitHub PR review → Vercel build → Next.js SSG reads MDX → static HTML + Pagefind index → Vercel CDN serves globally. No database, no API layer, no runtime content generation. Religious content integrity is enforced architecturally — every word baked into static HTML was written and reviewed by humans.
+
+## Content integrity rule
+
+No AI generates, paraphrases, or modifies theological text. AI may be used for code, design, and non-content tasks only. All religious content cites primary Islamic sources (Quran, hadith, classical scholars) and links to SeekersGuidance.org for depth.

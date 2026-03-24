@@ -1,0 +1,68 @@
+---
+description: Banned shortcuts. Highest priority rule.
+alwaysApply: true
+---
+
+# No Shortcuts
+
+Shortcuts create hidden gaps that cause problems later. This is the highest priority rule.
+
+A shortcut is any time you produce something incomplete and move on.
+
+## Banned code shortcuts
+
+- `pass`, `...`, or empty function/method bodies pretending to be implementation
+- `# TODO: implement` or `# TODO: add later` — if you can't implement it now, stop and say so
+- `Any` type (or language equivalent) instead of proper types
+- Silent error swallowing (`except Exception: pass`, empty catch blocks)
+- Happy-path-only implementation that ignores edge cases or error states
+- Hardcoded values that should come from config or environment
+- Writing a "simplified version" of what the architecture specifies
+- Copy-pasting a pattern without adapting it to the actual use case
+- Placeholder or fake data presented as real implementation
+
+## Banned hallucination shortcuts
+
+- Editing a file without reading it first — ALWAYS read a file before modifying it
+- Claiming you ran a command (tests, lints, build) without actually executing it and seeing the output
+- Importing a library or package without verifying it exists in the project's dependencies
+- Calling a function or method without verifying it exists in the codebase or library
+- Describing the project's current state from memory — re-read `docs/STATUS.md` if unsure
+- Referencing file contents from memory instead of re-reading the file
+- Making claims about code behavior without reading the actual code
+- Generating data, metrics, or statistics that weren't computed or observed
+- Assuming what an API returns without checking documentation or actual responses
+- Stating "this works" or "this is correct" without evidence (test output, lint output, build output)
+
+## Banned test fabrication shortcuts
+
+- Writing assertion-free tests that always pass
+- Deleting or commenting out failing tests instead of fixing the underlying code
+- Weakening test thresholds to make failures pass
+- Using unconditional `skip` to hide failures
+- Writing tests that import code but don't actually exercise it
+- Suppressing test errors with empty catch/except blocks
+- Reducing test count without explanation
+
+## Banned process shortcuts
+
+- Writing implementation without tests (test-first is required)
+- Committing with known failing tests
+- Skipping lints after changes
+- Not verifying architecture alignment after structural changes
+- Batching multiple unrelated changes into one commit
+- Moving to the next task when the current one has known issues
+- Skipping validation steps from the quality gate
+
+## Banned context shortcuts
+
+- Leaving decisions or rationale only in chat history — write to docs
+- Not updating STATUS.md after completing work
+- Assuming you know the current state without reading STATUS.md
+- Not reading project docs at session start
+
+## If you catch yourself about to shortcut
+
+1. Stop
+2. Do the full version
+3. If the full version is too complex for one step, break it into smaller tasks and do them all

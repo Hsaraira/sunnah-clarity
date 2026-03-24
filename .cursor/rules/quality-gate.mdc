@@ -1,0 +1,72 @@
+---
+description: Quality gate after every code change. No exceptions.
+alwaysApply: true
+---
+
+# Quality Gate
+
+Runs after EVERY code change — new file, modified file, bug fix. Automatic. No asking.
+
+## Step 1 — Lint
+
+Run `ReadLints` on every file you wrote or modified. Fix every error you introduced.
+
+## Step 2 — Language-specific validation
+
+### TypeScript / Next.js
+- Test-first: write tests BEFORE implementation
+- `npx tsc --noEmit` → must exit 0
+- Run test suite if one exists (e.g., `npm test`, `npx vitest`, `npx jest`) → ALL green
+- Dev server running + page loads + interactive elements work
+- No white screens, no console errors
+
+## Step 2b — Test integrity check (CRITICAL — agents fabricate tests)
+
+After running tests, verify:
+
+- Every test file has meaningful assertions (not just `assert True` or empty test bodies)
+- No tests were deleted or weakened compared to the previous commit
+- No unconditional `skip` without documented reason
+- No empty catch/except blocks that silently swallow test failures
+- Test count did not decrease without explanation
+- Tests actually exercise the code path they claim to test
+
+If any of these are violated, fix the tests before proceeding.
+
+## Step 3 — Architecture alignment
+
+Does this change still match `docs/ARCHITECTURE.md`?
+- If no: either fix the code OR update the architecture doc with rationale — never silently diverge
+
+## Step 4 — Commit and push
+
+```
+git add -A
+git commit -m "concise message"
+git push origin master
+```
+
+Every milestone. Not at end of session.
+
+## Step 5 — Automated review via Cloud Agents
+
+After completing a feature, phase, or sensitive change, automatically spawn the appropriate review agents in the background.
+
+| Change type | Review agents to spawn |
+|-------------|------------------------|
+| Small fix (1-3 files, no auth/data) | None — quality gate is sufficient |
+| Feature (new functionality) | Reviewer |
+| Phase completion | Reviewer → QA |
+| Sensitive (auth, payments, DB writes, secrets, user data) | Reviewer → Security → QA |
+| Pre-production / pre-launch | Reviewer → Security → QA |
+
+For each required review agent:
+1. Read the prompt from `.cursor/prompts/{agent}.md`
+2. Spawn a background Cloud Agent (Task tool, `run_in_background: true`)
+3. When the agent finishes, read its output
+4. Report findings to the user
+5. Fix any required issues
+
+## If any step fails
+
+Stop. Fix it. Do not proceed. Do not commit with a known failure.

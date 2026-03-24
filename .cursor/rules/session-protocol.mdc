@@ -1,0 +1,54 @@
+---
+description: Session start/end protocol. Enforces context recovery and git discipline.
+alwaysApply: true
+---
+
+# Session Protocol
+
+## On session start (MANDATORY)
+
+Load minimal viable context — research shows optimal session preamble is 300-750 tokens (~200-500 words). Do not dump entire project histories. Load only what's needed for the current task.
+
+1. Read `docs/STATUS.md` — know what's done, what's in progress, what's next
+2. Read `docs/ARCHITECTURE.md` — know the system design (skim, don't memorize — re-read relevant sections when needed)
+3. If resuming prior work, read `docs/DECISIONS.md` for context on past choices
+4. Identify what to work on from STATUS.md
+5. Confirm plan with user before writing code
+
+Do NOT read every file in the project at session start. Read only the docs above, then read specific code files as needed during implementation. Context windows degrade with noise — keep the preamble lean.
+
+## During development
+
+- Keep tasks scoped: 1-5 files per task. If a task grows larger, split it first.
+- If scope is unclear, switch to Plan mode before coding.
+- If you make an architecture decision, write it to `docs/DECISIONS.md` immediately.
+- If you discover a gap or inconsistency, fix it immediately and report what you fixed.
+- Update `docs/STATUS.md` as tasks complete — do not batch updates.
+
+## Git discipline (AUTOMATIC — not when asked)
+
+- If the project doesn't have a git repo yet, run `git init` before the first commit.
+- If no remote exists, create one (e.g., `gh repo create PROJECT_NAME --public --source=. --push`) or ask the user.
+- Commit after EVERY meaningful change. Not at end of session. Every time.
+- Push after EVERY commit.
+- Never batch unrelated changes into one commit.
+- Run `git status` before ending to confirm nothing is uncommitted.
+
+## On session end (MANDATORY)
+
+1. Update `docs/STATUS.md` — current state, progress, what's next
+2. Final commit and push
+3. Summarize: what was done, what's next
+
+## Task sizing rule
+
+- Tasks should touch 1-5 files
+- If a task grows beyond that, stop and split it
+- If architecture changes are needed, update docs FIRST, then implement
+- If uncertainty is high, plan before code
+
+## Conversation management
+
+- Start a NEW conversation when: finished a logical unit, agent seems confused, switching tasks
+- Continue SAME conversation when: debugging something just built, iterating on same feature
+- After ~30 back-and-forth turns, consider starting fresh
