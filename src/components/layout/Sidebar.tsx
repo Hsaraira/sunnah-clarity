@@ -1,0 +1,90 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const topics = [
+  { label: "Bid'a", href: "/topics/bidah" },
+  { label: "Mawlid", href: "/topics/mawlid" },
+  { label: "Dhikr", href: "/topics/dhikr" },
+  { label: "Tasawwuf", href: "/topics/tasawwuf" },
+  { label: "Madhabs", href: "/topics/madhabs" },
+  { label: "Isnad", href: "/topics/isnad" },
+  { label: "Scholars", href: "/topics/scholarly-tradition" },
+];
+
+const faqs = [
+  { label: "Is Mawlid haram?", href: "/faq/is-mawlid-haram" },
+  { label: "Is Sufism allowed?", href: "/faq/is-sufism-allowed" },
+  { label: "Do I need a madhab?", href: "/faq/do-i-need-a-madhab" },
+  { label: "Is group dhikr permissible?", href: "/faq/is-group-dhikr-permissible" },
+  { label: "What is bid'a?", href: "/faq/what-is-bidah" },
+];
+
+export default function Sidebar() {
+  const pathname = usePathname();
+
+  return (
+    <aside className="sticky top-24 space-y-8">
+      <div>
+        <p
+          className="text-xs font-semibold uppercase tracking-widest mb-3"
+          style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+        >
+          Topics
+        </p>
+        <ul className="space-y-1 list-none m-0 p-0">
+          {topics.map((topic) => {
+            const isActive = pathname === topic.href;
+            return (
+              <li key={topic.href}>
+                <Link
+                  href={topic.href}
+                  className="block py-1.5 px-3 text-sm rounded-md no-underline transition-colors"
+                  style={{
+                    fontFamily: "var(--font-inter), system-ui, sans-serif",
+                    color: isActive ? "var(--color-primary)" : "var(--text-secondary)",
+                    background: isActive ? "var(--bg-surface)" : "transparent",
+                    fontWeight: isActive ? 600 : 400,
+                  }}
+                >
+                  {topic.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div>
+        <p
+          className="text-xs font-semibold uppercase tracking-widest mb-3"
+          style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+        >
+          Common Questions
+        </p>
+        <ul className="space-y-1 list-none m-0 p-0">
+          {faqs.map((faq) => {
+            const isActive = pathname === faq.href;
+            return (
+              <li key={faq.href}>
+                <Link
+                  href={faq.href}
+                  className="block py-1.5 px-3 text-sm rounded-md no-underline transition-colors"
+                  style={{
+                    fontFamily: "var(--font-inter), system-ui, sans-serif",
+                    color: isActive ? "var(--color-primary)" : "var(--text-secondary)",
+                    background: isActive ? "var(--bg-surface)" : "transparent",
+                    fontWeight: isActive ? 600 : 400,
+                  }}
+                >
+                  {faq.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </aside>
+  );
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Newsreader, Playfair_Display, Inter, Amiri } from "next/font/google";
 import "./globals.css";
 
@@ -74,7 +75,17 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${newsreader.variable} ${playfair.variable} ${inter.variable} ${amiri.variable} h-full`}
+      suppressHydrationWarning
     >
+      <head>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

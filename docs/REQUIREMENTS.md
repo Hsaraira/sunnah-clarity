@@ -10,31 +10,31 @@
 ## Phase 1: MVP (Target 4-6 weeks)
 
 ### Design System
-- [ ] Self-hosted fonts: Newsreader, Playfair Display, Amiri, Inter (WOFF2 variable)
-- [ ] CSS custom properties for full color system (light + dark mode)
-- [ ] Fluid typography scale (Utopia)
-- [ ] Dark mode toggle with system preference detection
+- [~] Self-hosted fonts: Newsreader, Playfair Display, Amiri, Inter (currently via next/font/google; WOFF2 deferred)
+- [x] CSS custom properties for full color system (light + dark mode)
+- [x] Fluid typography scale (Utopia)
+- [x] Dark mode toggle with system preference detection
 
 ### Layout
-- [ ] ThreeColumnLayout component (sidebar + content + TOC)
-- [ ] Header with site navigation
-- [ ] Footer with about, methodology, SeekersGuidance credit
-- [ ] Left sidebar navigation (collapses to hamburger on mobile)
-- [ ] Right sticky Table of Contents (hides behind floating button on mobile)
-- [ ] Reading progress indicator (CSS-only)
-- [ ] Mobile-responsive at all breakpoints
+- [x] ThreeColumnLayout component (sidebar + content + TOC)
+- [x] Header with site navigation
+- [x] Footer with about, methodology, SeekersGuidance credit
+- [x] Left sidebar navigation (collapses to hamburger on mobile)
+- [x] Right sticky Table of Contents (hides behind floating button on mobile)
+- [x] Reading progress indicator (CSS-only)
+- [ ] Mobile-responsive at all breakpoints (needs polish)
 
 ### Content Components
-- [ ] HadithBlock (gold background, Arabic + translation, source citation)
-- [ ] QuranVerse (green-tinted background, Arabic + translation, surah:ayah)
-- [ ] MisconceptionBlock ("Common Claim" → "What Scholars Actually Say")
-- [ ] ScholarQuote (pull quote with attribution)
-- [ ] MadhabComparison (cross-madhab table with color-coded cells)
-- [ ] SourceCard (SeekersGuidance "go deeper" link card)
+- [x] HadithBlock (gold background, Arabic + translation, source citation)
+- [x] QuranVerse (green-tinted background, Arabic + translation, surah:ayah)
+- [x] MisconceptionBlock ("Common Claim" → "What Scholars Actually Say")
+- [x] ScholarQuote (pull quote with attribution + Arabic text support)
+- [x] MadhabComparison (cross-madhab table with color-coded cells)
+- [x] SourceCard (SeekersGuidance "go deeper" link card)
 - [ ] ProgressiveDisclosure (3-tier: summary → detailed → sources)
-- [ ] DropCap for article openings
-- [ ] GeometricPattern (SVG Islamic patterns at 3-8% opacity)
-- [ ] SectionDivider (geometric pattern replacing generic `<hr>`)
+- [x] DropCap for article openings
+- [x] GeometricPattern (SVG Islamic patterns at 3-8% opacity)
+- [x] SectionDivider (geometric pattern replacing generic `<hr>`)
 
 ### Content Pages
 - [ ] 5-7 topic hub pages with progressive disclosure
@@ -55,10 +55,10 @@
 - [ ] About page with editorial methodology and SeekersGuidance credit
 
 ### MDX Pipeline
-- [ ] MDX processing with frontmatter extraction
-- [ ] Frontmatter schema validation (title, slug, topic, sources, author, reviewer)
-- [ ] Static page generation from MDX files
-- [ ] Custom MDX components mapped to content components
+- [x] MDX processing with frontmatter extraction
+- [x] Frontmatter schema validation (title, slug, topic, sources, author, reviewer)
+- [x] Static page generation from MDX files
+- [x] Custom MDX components mapped to content components
 
 ### Search & SEO
 - [ ] Pagefind static search (post-build CLI step)

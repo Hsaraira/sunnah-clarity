@@ -1,10 +1,13 @@
+"use client";
+
 interface SourceCardProps {
   title: string;
   url: string;
+  source?: string;
   description?: string;
 }
 
-export function SourceCard({ title, url, description }: SourceCardProps) {
+export default function SourceCard({ title, url, source, description }: SourceCardProps) {
   return (
     <a
       href={url}
@@ -31,6 +34,14 @@ export function SourceCard({ title, url, description }: SourceCardProps) {
           >
             {title}
           </p>
+          {source && (
+            <p
+              className="text-xs mt-0.5"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              {source}
+            </p>
+          )}
           {description && (
             <p
               className="text-xs mt-1 line-clamp-2"

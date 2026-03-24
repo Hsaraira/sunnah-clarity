@@ -1,33 +1,48 @@
 interface ScholarQuoteProps {
-  quote: string;
   scholar: string;
   title?: string;
   dates?: string;
   source?: string;
+  quote?: string;
+  arabicText?: string;
+  translation?: string;
 }
 
 export default function ScholarQuote({
-  quote,
   scholar,
   title,
   dates,
   source,
+  quote,
+  arabicText,
+  translation,
 }: ScholarQuoteProps) {
   return (
     <blockquote
       className="my-8 border-l-4 pl-6 py-2"
       style={{ borderLeftColor: "var(--color-primary)" }}
     >
-      <p
-        className="text-lg leading-relaxed italic"
-        style={{
-          fontFamily: "var(--font-newsreader), Georgia, serif",
-          color: "var(--text-primary)",
-          fontSize: "var(--step-1)",
-        }}
-      >
-        &ldquo;{quote}&rdquo;
-      </p>
+      {arabicText && (
+        <p
+          lang="ar"
+          className="text-lg leading-relaxed mb-3"
+          style={{ color: "var(--text-primary)" }}
+        >
+          {arabicText}
+        </p>
+      )}
+      {(quote || translation) && (
+        <p
+          className="text-lg leading-relaxed italic"
+          style={{
+            fontFamily: "var(--font-newsreader), Georgia, serif",
+            color: "var(--text-primary)",
+            fontSize: "var(--step-1)",
+          }}
+        >
+          &ldquo;{quote ?? translation}&rdquo;
+        </p>
+      )}
       <footer className="mt-3">
         <span className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
           — {scholar}

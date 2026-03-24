@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const topics = [
   { label: "Bid'a", href: "/topics/bidah" },
@@ -60,8 +61,10 @@ export default function Header() {
             </Link>
           </nav>
 
-          <button
-            className="md:hidden p-2 rounded-md"
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            <button
+              className="md:hidden p-2 rounded-md"
             style={{ color: "var(--text-primary)" }}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
@@ -73,8 +76,9 @@ export default function Header() {
               ) : (
                 <path d="M4 6h16M4 12h16M4 18h16" />
               )}
-            </svg>
-          </button>
+              </svg>
+            </button>
+          </div>
         </div>
 
         {mobileOpen && (
