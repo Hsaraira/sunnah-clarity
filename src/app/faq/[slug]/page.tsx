@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ThreeColumnLayout from "@/components/layout/ThreeColumnLayout";
+import JsonLd, { articleJsonLd } from "@/components/seo/JsonLd";
 import { getAllFAQSlugs, getFAQBySlug } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -46,6 +47,13 @@ export default async function FAQPage({
 
   return (
     <>
+      <JsonLd
+        data={articleJsonLd({
+          title: faq.frontmatter.question,
+          description: `${faq.frontmatter.question} — answered clearly with scholarly evidence.`,
+          url: `https://sunnahclarity.org/faq/${slug}`,
+        })}
+      />
       <Header />
       <ThreeColumnLayout>
         <article>
@@ -71,7 +79,7 @@ export default async function FAQPage({
               <span>Topic: {faq.frontmatter.topic}</span>
             </div>
           </header>
-          <div className="article-content article-body">
+          <div className="article-content article-body" data-pagefind-body>
             <Content />
           </div>
         </article>

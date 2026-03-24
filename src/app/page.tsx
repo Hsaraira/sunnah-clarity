@@ -5,6 +5,7 @@ import SectionDivider from "@/components/decorative/SectionDivider";
 import GeometricPattern from "@/components/decorative/GeometricPattern";
 import TopicCard from "@/components/content/TopicCard";
 import FAQLink from "@/components/content/FAQLink";
+import JsonLd, { websiteJsonLd } from "@/components/seo/JsonLd";
 
 const topics = [
   {
@@ -91,9 +92,10 @@ const faqs = [
 export default function Home() {
   return (
     <>
+      <JsonLd data={websiteJsonLd()} />
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1" data-pagefind-body>
         {/* Hero */}
         <section
           className="relative overflow-hidden py-20 sm:py-28"

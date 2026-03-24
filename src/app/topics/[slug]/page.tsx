@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ThreeColumnLayout from "@/components/layout/ThreeColumnLayout";
+import JsonLd, { articleJsonLd } from "@/components/seo/JsonLd";
 import { getAllTopicSlugs, getTopicBySlug } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -46,6 +47,13 @@ export default async function TopicPage({
 
   return (
     <>
+      <JsonLd
+        data={articleJsonLd({
+          title: topic.frontmatter.title,
+          description: topic.frontmatter.description,
+          url: `https://sunnahclarity.org/topics/${slug}`,
+        })}
+      />
       <Header />
       <ThreeColumnLayout>
         <article>
@@ -79,7 +87,7 @@ export default async function TopicPage({
               <span>{topic.readingTime} min read</span>
             </div>
           </header>
-          <div className="article-content article-body">
+          <div className="article-content article-body" data-pagefind-body>
             <Content />
           </div>
         </article>

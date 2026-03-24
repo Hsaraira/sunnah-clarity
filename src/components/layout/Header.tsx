@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import SearchDialog from "@/components/search/SearchDialog";
 
 const topics = [
   { label: "Bid'a", href: "/topics/bidah" },
@@ -61,7 +62,8 @@ export default function Header() {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
+            <SearchDialog />
             <ThemeToggle />
             <button
               className="md:hidden p-2 rounded-md"
