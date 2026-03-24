@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Newsreader, Playfair_Display, Inter, Amiri } from "next/font/google";
 import "./globals.css";
@@ -30,6 +30,16 @@ const amiri = Amiri({
   display: "swap",
   weight: ["400", "700"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF5" },
+    { media: "(prefers-color-scheme: dark)", color: "#121218" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sunnahclarity.org"),

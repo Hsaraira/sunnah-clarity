@@ -39,16 +39,8 @@ export default function Header() {
               <Link
                 key={topic.href}
                 href={topic.href}
-                className="px-3 py-2 text-sm font-medium rounded-md transition-colors no-underline"
+                className="nav-link-hover px-3 py-2 text-sm font-medium rounded-md no-underline"
                 style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "var(--text-primary)";
-                  e.currentTarget.style.background = "var(--bg-surface)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--text-secondary)";
-                  e.currentTarget.style.background = "transparent";
-                }}
               >
                 {topic.label}
               </Link>

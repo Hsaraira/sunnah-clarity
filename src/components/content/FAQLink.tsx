@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 interface FAQLinkProps {
@@ -11,17 +9,7 @@ export default function FAQLink({ question, href }: FAQLinkProps) {
   return (
     <Link
       href={href}
-      className="flex items-center justify-between rounded-lg px-5 py-4 no-underline transition-colors"
-      style={{
-        background: "var(--bg-primary)",
-        border: "1px solid var(--border-default)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "var(--color-primary)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "var(--border-default)";
-      }}
+      className="card-interactive flex items-center justify-between rounded-lg px-5 py-4 no-underline"
     >
       <span
         className="text-base font-medium"

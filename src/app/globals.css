@@ -12,7 +12,7 @@
   /* Text */
   --text-primary: #1A1A2E;
   --text-secondary: #4A4A5A;
-  --text-muted: #6B6B7B;
+  --text-muted: #5F5F6F;
 
   /* Brand */
   --color-primary: #27579E;
@@ -42,7 +42,7 @@
 
   --text-primary: #E8E6E0;
   --text-secondary: #9A9A9A;
-  --text-muted: #6B6B7B;
+  --text-muted: #8A8A9A;
 
   --color-primary: #5B8EC9;
   --color-accent: #E6C670;
@@ -232,6 +232,33 @@ h4 { font-size: var(--step-1); font-family: var(--font-playfair), Georgia, serif
 ::selection {
   background: color-mix(in srgb, var(--color-primary) 20%, transparent);
   color: var(--text-primary);
+}
+
+/* ===== INTERACTIVE CARDS ===== */
+
+.card-interactive {
+  border: 1px solid var(--border-default);
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+@media (hover: hover) {
+  .card-interactive:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+}
+
+.nav-link-hover {
+  transition: color 0.15s, background-color 0.15s;
+}
+
+@media (hover: hover) {
+  .nav-link-hover:hover {
+    color: var(--text-primary);
+    background: var(--bg-surface);
+  }
 }
 
 /* ===== FOCUS VISIBLE ===== */

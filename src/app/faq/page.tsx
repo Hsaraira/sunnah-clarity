@@ -31,7 +31,7 @@ export default function FAQIndexPage() {
       <Header />
       <main className="flex-1">
         <section className="relative overflow-hidden py-16 sm:py-20">
-          <GeometricPattern opacity={0.03} />
+          <GeometricPattern opacity={0.04} />
           <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
             <p
               className="text-sm font-medium uppercase tracking-widest mb-2"

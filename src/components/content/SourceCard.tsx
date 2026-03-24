@@ -1,5 +1,3 @@
-"use client";
-
 interface SourceCardProps {
   title: string;
   url: string;
@@ -13,18 +11,8 @@ export default function SourceCard({ title, url, source, description }: SourceCa
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block rounded-lg p-4 no-underline transition-shadow"
-      style={{
-        border: "1px solid var(--border-default)",
-        background: "var(--bg-surface)",
-        boxShadow: "var(--shadow-sm)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "var(--shadow-md)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "var(--shadow-sm)";
-      }}
+      className="card-interactive block rounded-lg p-4 no-underline"
+      style={{ background: "var(--bg-surface)" }}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">

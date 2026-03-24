@@ -8,7 +8,7 @@ export default function NotFound() {
     <>
       <Header />
       <main className="flex-1 flex items-center justify-center relative overflow-hidden py-20">
-        <GeometricPattern opacity={0.03} />
+        <GeometricPattern opacity={0.04} />
         <div className="relative text-center px-4">
           <p
             className="text-8xl font-bold mb-4"

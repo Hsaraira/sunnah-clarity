@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 interface TopicCardProps {
@@ -20,20 +18,7 @@ export default function TopicCard({
   return (
     <Link
       href={href}
-      className="group block rounded-xl p-6 no-underline transition-shadow"
-      style={{
-        border: "1px solid var(--border-default)",
-        background: "var(--bg-primary)",
-        boxShadow: "var(--shadow-sm)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "var(--shadow-md)";
-        e.currentTarget.style.borderColor = "var(--color-primary)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "var(--shadow-sm)";
-        e.currentTarget.style.borderColor = "var(--border-default)";
-      }}
+      className="card-interactive group block rounded-xl p-6 no-underline"
     >
       <span className="text-2xl mb-3 block" aria-hidden="true">
         {icon}

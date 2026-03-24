@@ -118,8 +118,9 @@ export default function SearchDialog() {
             border: "1px solid var(--border-default)",
             color: "var(--text-muted)",
           }}
+          suppressHydrationWarning
         >
-          Ctrl K
+          {typeof navigator !== "undefined" && /Mac|iPhone/.test(navigator.platform) ? "⌘K" : "Ctrl K"}
         </kbd>
       </button>
     );
@@ -202,14 +203,8 @@ export default function SearchDialog() {
                 <li key={i}>
                   <a
                     href={result.url}
-                    className="block px-4 py-3 no-underline transition-colors"
+                    className="nav-link-hover block px-4 py-3 no-underline"
                     style={{ color: "var(--text-primary)" }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "var(--bg-surface)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "transparent";
-                    }}
                     onClick={() => setOpen(false)}
                   >
                     <p
