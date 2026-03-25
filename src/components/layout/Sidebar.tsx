@@ -2,67 +2,26 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { TOPICS } from "@/lib/navigation";
+import { topicNavItems } from "@/lib/navigation";
 
-interface SidebarFAQ {
+interface SidebarFAQItem {
   label: string;
   href: string;
 }
 
 interface SidebarProps {
   contentType?: "topic" | "faq" | "scholar";
-  currentTopic?: string;
+  currentTopicSlug?: string;
+  relatedFAQs?: SidebarFAQItem[];
 }
 
-const FAQ_DATA: Record<string, SidebarFAQ[]> = {
-  "Bid'a": [
-    { label: "What is bid'a?", href: "/faq/what-is-bidah" },
-    { label: "Is tawassul shirk?", href: "/faq/is-tawassul-shirk" },
-    { label: "Can you visit graves?", href: "/faq/can-you-visit-graves" },
-    { label: "Can I say Ya Muhammad?", href: "/faq/can-i-say-ya-muhammad" },
-  ],
-  Mawlid: [
-    { label: "Is Mawlid haram?", href: "/faq/is-mawlid-haram" },
-  ],
-  Dhikr: [
-    { label: "Is group dhikr permissible?", href: "/faq/is-group-dhikr-permissible" },
-    { label: "Is salawat a bid'a?", href: "/faq/is-salawat-bidah" },
-    { label: "What is hadra?", href: "/faq/what-is-hadra" },
-    { label: "Did Ibn Mas'ud ban dhikr?", href: "/faq/did-ibn-masud-prohibit-group-dhikr" },
-  ],
-  Tasawwuf: [
-    { label: "Is Sufism allowed?", href: "/faq/is-sufism-allowed" },
-    { label: "What is ihsan?", href: "/faq/what-is-ihsan" },
-  ],
-  Madhabs: [
-    { label: "Do I need a madhab?", href: "/faq/do-i-need-a-madhab" },
-    { label: "Is taqlid allowed?", href: "/faq/is-taqlid-allowed" },
-    { label: "Why do scholars differ?", href: "/faq/why-do-scholars-differ" },
-  ],
-  Music: [
-    { label: "Are nasheeds allowed?", href: "/faq/are-nasheeds-allowed" },
-    { label: "Are instruments haram?", href: "/faq/are-instruments-haram" },
-    { label: "What is the duff?", href: "/faq/what-is-the-duff" },
-  ],
-};
-
-const SLUG_TO_FAQ_TOPIC: Record<string, string> = {
-  bidah: "Bid'a",
-  mawlid: "Mawlid",
-  dhikr: "Dhikr",
-  tasawwuf: "Tasawwuf",
-  madhabs: "Madhabs",
-  "music-nasheeds": "Music",
-};
-
-export default function Sidebar({ contentType = "topic", currentTopic }: SidebarProps) {
+export default function Sidebar({
+  contentType = "topic",
+  currentTopicSlug,
+  relatedFAQs = [],
+}: SidebarProps) {
   const pathname = usePathname();
-
-  let faqTopicKey = currentTopic ?? "";
-  if (contentType === "topic" && currentTopic) {
-    faqTopicKey = SLUG_TO_FAQ_TOPIC[currentTopic] ?? currentTopic;
-  }
-  const relatedFAQs = faqTopicKey ? (FAQ_DATA[faqTopicKey] ?? []) : [];
+  const topics = topicNavItems();
 
   return (
     <aside className="sticky top-24 space-y-8">
@@ -74,7 +33,7 @@ export default function Sidebar({ contentType = "topic", currentTopic }: Sidebar
           Topics
         </p>
         <ul className="space-y-1 list-none m-0 p-0">
-          {TOPICS.map((topic) => {
+          {topics.map((topic) => {
             const isActive = pathname === topic.href;
             return (
               <li key={topic.href}>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TOPICS } from "@/lib/navigation";
+import { topicNavItems } from "@/lib/navigation";
 
 export default function Footer() {
   return (
@@ -34,7 +34,7 @@ export default function Footer() {
               Topics
             </h4>
             <ul className="space-y-2">
-              {TOPICS.map((topic) => (
+              {topicNavItems().map((topic) => (
                 <li key={topic.href}>
                   <Link
                     href={topic.href}

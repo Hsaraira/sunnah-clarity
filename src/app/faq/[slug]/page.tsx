@@ -4,7 +4,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ThreeColumnLayout from "@/components/layout/ThreeColumnLayout";
 import JsonLd, { articleJsonLd } from "@/components/seo/JsonLd";
-import { getAllFAQSlugs, getFAQBySlug } from "@/lib/content";
+import { getAllFAQSlugs, getFAQBySlug, getSidebarFAQs } from "@/lib/content";
+import { faqKeyToSlug } from "@/lib/navigation";
 
 export const dynamicParams = false;
 
@@ -47,6 +48,8 @@ export default async function FAQPage({
   }
 
   const { default: Content } = await import(`@content/faq/${slug}.mdx`);
+  const topicSlug = faqKeyToSlug(faq.frontmatter.topic);
+  const relatedFAQs = getSidebarFAQs(faq.frontmatter.topic);
 
   return (
     <>
@@ -59,7 +62,7 @@ export default async function FAQPage({
         })}
       />
       <Header />
-      <ThreeColumnLayout contentType="faq" currentTopic={faq.frontmatter.topic}>
+      <ThreeColumnLayout contentType="faq" currentTopicSlug={topicSlug} relatedFAQs={relatedFAQs}>
         <article>
           <header className="mb-10">
             <p

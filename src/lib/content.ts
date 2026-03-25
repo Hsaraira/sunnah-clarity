@@ -132,6 +132,14 @@ export function getFAQsGroupedByTopic(): Record<string, ContentMeta<FAQFrontmatt
   return grouped;
 }
 
+/** Returns sidebar-compatible FAQ links for a given FAQ frontmatter topic key */
+export function getSidebarFAQs(faqKey: string): { label: string; href: string }[] {
+  return getFAQsByTopic(faqKey).map((faq) => ({
+    label: faq.frontmatter.question,
+    href: `/faq/${faq.frontmatter.slug}`,
+  }));
+}
+
 export function getAllScholarSlugs(): string[] {
   return getContentFiles("scholars").map((f) =>
     f.replace(/\.mdx?$/, "")

@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import GeometricPattern from "@/components/decorative/GeometricPattern";
 import SectionDivider from "@/components/decorative/SectionDivider";
 import { getFAQsGroupedByTopic } from "@/lib/content";
-import { FAQ_TOPIC_TO_LABEL, FAQ_TOPIC_TO_SLUG } from "@/lib/navigation";
+import { faqGroupOrder, faqKeyToLabel, faqKeyToSlug } from "@/lib/navigation";
 
 export const metadata: Metadata = {
   title: "Common Questions — Sunnah Clarity",
@@ -16,10 +16,9 @@ export const metadata: Metadata = {
   },
 };
 
-const TOPIC_ORDER = ["Bid'a", "Mawlid", "Dhikr", "Tasawwuf", "Madhabs", "Music"];
-
 export default function FAQIndexPage() {
   const grouped = getFAQsGroupedByTopic();
+  const topicOrder = faqGroupOrder();
 
   return (
     <>
@@ -57,11 +56,11 @@ export default function FAQIndexPage() {
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <div className="space-y-12">
-              {TOPIC_ORDER.map((topicKey) => {
+              {topicOrder.map((topicKey) => {
                 const faqs = grouped[topicKey];
                 if (!faqs || faqs.length === 0) return null;
-                const topicLabel = FAQ_TOPIC_TO_LABEL[topicKey] ?? topicKey;
-                const topicSlug = FAQ_TOPIC_TO_SLUG[topicKey];
+                const topicLabel = faqKeyToLabel(topicKey);
+                const topicSlug = faqKeyToSlug(topicKey);
 
                 return (
                   <div key={topicKey}>
