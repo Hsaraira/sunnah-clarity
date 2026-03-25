@@ -55,7 +55,7 @@ export default async function TopicPage({
         data={articleJsonLd({
           title: topic.frontmatter.title,
           description: topic.frontmatter.description,
-          url: `https://sunnahclarity.org/topics/${slug}`,
+          url: `https://sunnahclarity.com/topics/${slug}`,
         })}
       />
       <Header />

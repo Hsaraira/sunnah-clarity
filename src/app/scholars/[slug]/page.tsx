@@ -55,7 +55,7 @@ export default async function ScholarPage({
         data={articleJsonLd({
           title: scholar.frontmatter.title,
           description: scholar.frontmatter.description,
-          url: `https://sunnahclarity.org/scholars/${slug}`,
+          url: `https://sunnahclarity.com/scholars/${slug}`,
         })}
       />
       <Header />

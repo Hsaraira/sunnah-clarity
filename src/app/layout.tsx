@@ -42,7 +42,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sunnahclarity.org"),
+  metadataBase: new URL("https://sunnahclarity.com"),
   alternates: {
     canonical: "./",
   },
@@ -101,7 +101,7 @@ export default function RootLayout({
         />
         <Script
           defer
-          data-domain="sunnahclarity.org"
+          data-domain="sunnahclarity.com"
           src="https://plausible.io/js/script.js"
           strategy="afterInteractive"
         />

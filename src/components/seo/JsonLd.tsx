@@ -33,7 +33,7 @@ export function articleJsonLd({
     publisher: {
       "@type": "Organization",
       name: "Sunnah Clarity",
-      url: "https://sunnahclarity.org",
+      url: "https://sunnahclarity.com",
     },
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
@@ -63,7 +63,7 @@ export function websiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Sunnah Clarity",
-    url: "https://sunnahclarity.org",
+    url: "https://sunnahclarity.com",
     description:
       "Clear, accessible explanations of traditional Sunni Islamic concepts for everyday Muslims.",
     inLanguage: "en",

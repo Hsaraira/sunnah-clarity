@@ -7,7 +7,7 @@ import {
 
 export const dynamic = "force-static";
 
-const BASE_URL = "https://sunnahclarity.org";
+const BASE_URL = "https://sunnahclarity.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const topicSlugs = getAllTopicSlugs();

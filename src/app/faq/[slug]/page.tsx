@@ -55,7 +55,7 @@ export default async function FAQPage({
         data={articleJsonLd({
           title: faq.frontmatter.question,
           description: `${faq.frontmatter.question} — answered clearly with scholarly evidence.`,
-          url: `https://sunnahclarity.org/faq/${slug}`,
+          url: `https://sunnahclarity.com/faq/${slug}`,
         })}
       />
       <Header />

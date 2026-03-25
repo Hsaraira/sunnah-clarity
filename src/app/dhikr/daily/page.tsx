@@ -266,7 +266,7 @@ export default function DailyDhikrPage() {
           title: "Daily Dhikr Guide",
           description:
             "Complete collection of morning and evening adhkar with Arabic text, English translation, and hadith-sourced benefits.",
-          url: "https://sunnahclarity.org/dhikr/daily",
+          url: "https://sunnahclarity.com/dhikr/daily",
         })}
       />
       <Header />
