@@ -50,7 +50,11 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 ## What's next
 
-- Custom domain setup (sunnahclarity.com — DNS in progress, SSL provisioning)
+- Enforce Topic vs FAQ editorial contract (topics should be longer than related FAQs)
+- /start page (beginner onboarding reading paths)
+- /guides hub (migrate Daily Dhikr, future practice guides)
+- Scholar "Cited in" backlinks
+- Glossary / reference system for Arabic terminology
 - Self-hosted WOFF2 fonts (optional — next/font/google works well)
 - Additional FAQ entries as new questions arise
 
@@ -62,6 +66,8 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 | Date | What changed | Files touched |
 |------|-------------|---------------|
+| 2026-03-25 | IA refactor phase 2: TOPIC_REGISTRY as single source of truth, slug-based canonical keys, featured field, build-time validation, contextual sidebar, topics hub, grouped FAQ index, content-architecture.md | 31+ files |
+| 2026-03-25 | IA refactor phase 1: shared nav config, simplified header (5 hub links), fixed footer bugs, created /topics hub page | 13 files |
 | 2026-03-25 | Deep content expansion: all 14 thin FAQs rewritten with full hadith Arabic/English, Quran verses, ScholarQuotes, MisconceptionBlocks; expanded isnad, scholarly-tradition, music-nasheeds topics | 17 files |
 | 2026-03-25 | Music & Nasheeds topic, 6 new FAQs, expanded dhikr + tawassul, nav/homepage updates | 20+ files |
 | 2026-03-24 | Scholar profiles (39), routes, nav, sitemap, cross-links in MDX, ScholarQuote/MisconceptionBlock | 60+ files |
