@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { VALID_TOPIC_SLUGS } from "@/lib/navigation";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -10,7 +11,6 @@ export interface TopicFrontmatter {
   slug: string;
   subtitle: string;
   description: string;
-  icon: string;
   primarySources: string[];
   author: string;
   reviewedBy: string;
@@ -24,6 +24,7 @@ export interface FAQFrontmatter {
   slug: string;
   question: string;
   topic: string;
+  featured?: boolean;
   primarySources: string[];
   author: string;
   reviewedBy: string;
@@ -51,6 +52,54 @@ export interface ContentMeta<T> {
   readingTime: number;
 }
 
+// --- Validation ---
+
+const validationErrors: string[] = [];
+
+function validateTopicFrontmatter(fm: TopicFrontmatter, filename: string): void {
+  const required: (keyof TopicFrontmatter)[] = ["slug", "title", "subtitle", "description", "status"];
+  for (const field of required) {
+    if (!fm[field]) {
+      validationErrors.push(`[topics/${filename}] Missing required field: ${field}`);
+    }
+  }
+}
+
+function validateFAQFrontmatter(fm: FAQFrontmatter, filename: string): void {
+  const required: (keyof FAQFrontmatter)[] = ["slug", "title", "question", "topic", "status"];
+  for (const field of required) {
+    if (!fm[field]) {
+      validationErrors.push(`[faq/${filename}] Missing required field: ${field}`);
+    }
+  }
+  if (fm.topic && !VALID_TOPIC_SLUGS.has(fm.topic)) {
+    validationErrors.push(
+      `[faq/${filename}] Invalid topic "${fm.topic}". Valid slugs: ${[...VALID_TOPIC_SLUGS].join(", ")}`
+    );
+  }
+}
+
+function validateScholarFrontmatter(fm: ScholarFrontmatter, filename: string): void {
+  const required: (keyof ScholarFrontmatter)[] = ["slug", "title", "subtitle", "description", "status"];
+  for (const field of required) {
+    if (!fm[field]) {
+      validationErrors.push(`[scholars/${filename}] Missing required field: ${field}`);
+    }
+  }
+}
+
+function flushValidationErrors(): void {
+  if (validationErrors.length > 0) {
+    const msg = `\n❌ Frontmatter validation failed:\n${validationErrors.map((e) => `  • ${e}`).join("\n")}\n`;
+    console.error(msg);
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(msg);
+    }
+  }
+}
+
+// --- File loading ---
+
 function getContentFiles(subdir: string): string[] {
   const dir = path.join(CONTENT_DIR, subdir);
   if (!fs.existsSync(dir)) return [];
@@ -72,6 +121,8 @@ function parseContentFile<T>(subdir: string, filename: string): ContentMeta<T> {
   };
 }
 
+// --- Topics ---
+
 export function getAllTopicSlugs(): string[] {
   return getContentFiles("topics").map((f) =>
     f.replace(/\.mdx?$/, "")
@@ -84,15 +135,25 @@ export function getTopicBySlug(slug: string): ContentMeta<TopicFrontmatter> | nu
     (f) => f.replace(/\.mdx?$/, "") === slug
   );
   if (!match) return null;
-  return parseContentFile<TopicFrontmatter>("topics", match);
+  const result = parseContentFile<TopicFrontmatter>("topics", match);
+  validateTopicFrontmatter(result.frontmatter, match);
+  return result;
 }
 
 export function getAllTopics(): ContentMeta<TopicFrontmatter>[] {
-  return getContentFiles("topics")
-    .map((f) => parseContentFile<TopicFrontmatter>("topics", f))
+  const topics = getContentFiles("topics")
+    .map((f) => {
+      const result = parseContentFile<TopicFrontmatter>("topics", f);
+      validateTopicFrontmatter(result.frontmatter, f);
+      return result;
+    })
     .filter((t) => t.frontmatter.status === "published")
     .sort((a, b) => (a.frontmatter.order ?? 0) - (b.frontmatter.order ?? 0));
+  flushValidationErrors();
+  return topics;
 }
+
+// --- FAQs ---
 
 export function getAllFAQSlugs(): string[] {
   return getContentFiles("faq").map((f) =>
@@ -106,18 +167,30 @@ export function getFAQBySlug(slug: string): ContentMeta<FAQFrontmatter> | null {
     (f) => f.replace(/\.mdx?$/, "") === slug
   );
   if (!match) return null;
-  return parseContentFile<FAQFrontmatter>("faq", match);
+  const result = parseContentFile<FAQFrontmatter>("faq", match);
+  validateFAQFrontmatter(result.frontmatter, match);
+  return result;
 }
 
 export function getAllFAQs(): ContentMeta<FAQFrontmatter>[] {
-  return getContentFiles("faq")
-    .map((f) => parseContentFile<FAQFrontmatter>("faq", f))
+  const faqs = getContentFiles("faq")
+    .map((f) => {
+      const result = parseContentFile<FAQFrontmatter>("faq", f);
+      validateFAQFrontmatter(result.frontmatter, f);
+      return result;
+    })
     .filter((faq) => faq.frontmatter.status === "published");
+  flushValidationErrors();
+  return faqs;
 }
 
-export function getFAQsByTopic(topic: string): ContentMeta<FAQFrontmatter>[] {
+export function getFeaturedFAQs(): ContentMeta<FAQFrontmatter>[] {
+  return getAllFAQs().filter((faq) => faq.frontmatter.featured === true);
+}
+
+export function getFAQsByTopic(topicSlug: string): ContentMeta<FAQFrontmatter>[] {
   return getAllFAQs().filter(
-    (faq) => faq.frontmatter.topic === topic
+    (faq) => faq.frontmatter.topic === topicSlug
   );
 }
 
@@ -132,13 +205,14 @@ export function getFAQsGroupedByTopic(): Record<string, ContentMeta<FAQFrontmatt
   return grouped;
 }
 
-/** Returns sidebar-compatible FAQ links for a given FAQ frontmatter topic key */
-export function getSidebarFAQs(faqKey: string): { label: string; href: string }[] {
-  return getFAQsByTopic(faqKey).map((faq) => ({
+export function getSidebarFAQs(topicSlug: string): { label: string; href: string }[] {
+  return getFAQsByTopic(topicSlug).map((faq) => ({
     label: faq.frontmatter.question,
     href: `/faq/${faq.frontmatter.slug}`,
   }));
 }
+
+// --- Scholars ---
 
 export function getAllScholarSlugs(): string[] {
   return getContentFiles("scholars").map((f) =>
@@ -154,14 +228,22 @@ export function getScholarBySlug(
     (f) => f.replace(/\.mdx?$/, "") === slug
   );
   if (!match) return null;
-  return parseContentFile<ScholarFrontmatter>("scholars", match);
+  const result = parseContentFile<ScholarFrontmatter>("scholars", match);
+  validateScholarFrontmatter(result.frontmatter, match);
+  return result;
 }
 
 export function getAllScholars(): ContentMeta<ScholarFrontmatter>[] {
-  return getContentFiles("scholars")
-    .map((f) => parseContentFile<ScholarFrontmatter>("scholars", f))
+  const scholars = getContentFiles("scholars")
+    .map((f) => {
+      const result = parseContentFile<ScholarFrontmatter>("scholars", f);
+      validateScholarFrontmatter(result.frontmatter, f);
+      return result;
+    })
     .filter((s) => s.frontmatter.status === "published")
     .sort((a, b) =>
       a.frontmatter.title.localeCompare(b.frontmatter.title, "en")
     );
+  flushValidationErrors();
+  return scholars;
 }

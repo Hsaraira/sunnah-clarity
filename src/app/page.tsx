@@ -8,6 +8,7 @@ import FAQLink from "@/components/content/FAQLink";
 import JsonLd, { websiteJsonLd } from "@/components/seo/JsonLd";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { TOPIC_REGISTRY } from "@/lib/navigation";
+import { getFeaturedFAQs } from "@/lib/content";
 
 const topics = TOPIC_REGISTRY.map((t) => ({
   title: t.title,
@@ -16,52 +17,10 @@ const topics = TOPIC_REGISTRY.map((t) => ({
   href: `/topics/${t.slug}`,
 }));
 
-const faqs = [
-  {
-    question: "Is celebrating the Mawlid haram?",
-    href: "/faq/is-mawlid-haram",
-  },
-  {
-    question: "Is Sufism allowed in Islam?",
-    href: "/faq/is-sufism-allowed",
-  },
-  {
-    question: "Do I need to follow a madhab?",
-    href: "/faq/do-i-need-a-madhab",
-  },
-  {
-    question: "Is group dhikr permissible?",
-    href: "/faq/is-group-dhikr-permissible",
-  },
-  {
-    question: "What is bid'a in Islam?",
-    href: "/faq/what-is-bidah",
-  },
-  {
-    question: "Is tawassul (seeking intercession) shirk?",
-    href: "/faq/is-tawassul-shirk",
-  },
-  {
-    question: "Why do Islamic scholars differ?",
-    href: "/faq/why-do-scholars-differ",
-  },
-  {
-    question: "What is ihsan?",
-    href: "/faq/what-is-ihsan",
-  },
-  {
-    question: "Are nasheeds allowed in Islam?",
-    href: "/faq/are-nasheeds-allowed",
-  },
-  {
-    question: "Can I say 'Ya Muhammad'?",
-    href: "/faq/can-i-say-ya-muhammad",
-  },
-  {
-    question: "What is hadra, and is it permissible?",
-    href: "/faq/what-is-hadra",
-  },
-];
+const faqs = getFeaturedFAQs().map((faq) => ({
+  question: faq.frontmatter.question,
+  href: `/faq/${faq.frontmatter.slug}`,
+}));
 
 export default function Home() {
   return (
@@ -143,7 +102,7 @@ export default function Home() {
                 className="text-base max-w-xl mx-auto"
                 style={{ color: "var(--text-secondary)", fontFamily: "var(--font-newsreader), Georgia, serif" }}
               >
-                Each topic is explained at three levels — a plain-language summary,
+                Each topic is explained with a plain-language summary,
                 detailed scholarly evidence, and full source citations.
               </p>
             </div>

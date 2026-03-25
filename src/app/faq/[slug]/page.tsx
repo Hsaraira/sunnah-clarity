@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import ThreeColumnLayout from "@/components/layout/ThreeColumnLayout";
 import JsonLd, { articleJsonLd } from "@/components/seo/JsonLd";
 import { getAllFAQSlugs, getFAQBySlug, getSidebarFAQs } from "@/lib/content";
-import { faqKeyToSlug } from "@/lib/navigation";
+import { topicBySlug } from "@/lib/navigation";
 
 export const dynamicParams = false;
 
@@ -48,8 +48,8 @@ export default async function FAQPage({
   }
 
   const { default: Content } = await import(`@content/faq/${slug}.mdx`);
-  const topicSlug = faqKeyToSlug(faq.frontmatter.topic);
-  const relatedFAQs = getSidebarFAQs(faq.frontmatter.topic);
+  const topicSlug = faq.frontmatter.topic;
+  const relatedFAQs = getSidebarFAQs(topicSlug);
 
   return (
     <>
@@ -84,7 +84,7 @@ export default async function FAQPage({
               }}
             >
               <span>{faq.readingTime} min read</span>
-              <span>Topic: {faq.frontmatter.topic}</span>
+              <span>Topic: {topicBySlug(faq.frontmatter.topic)?.label ?? faq.frontmatter.topic}</span>
             </div>
           </header>
           <div className="article-content article-body" data-pagefind-body>
