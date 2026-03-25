@@ -52,6 +52,13 @@ const topics = [
     href: "/topics/isnad",
   },
   {
+    title: "Music & Nasheeds",
+    subtitle: "What Is Permitted in Devotional Sound",
+    description:
+      "The traditional ruling on instruments, the duff exception, nasheeds, and the conditions scholars attach — with evidence from the four schools.",
+    href: "/topics/music-nasheeds",
+  },
+  {
     title: "The Scholarly Tradition",
     subtitle: "Why Scholars Matter",
     description:
@@ -93,6 +100,18 @@ const faqs = [
     question: "What is ihsan?",
     href: "/faq/what-is-ihsan",
   },
+  {
+    question: "Are nasheeds allowed in Islam?",
+    href: "/faq/are-nasheeds-allowed",
+  },
+  {
+    question: "Can I say 'Ya Muhammad'?",
+    href: "/faq/can-i-say-ya-muhammad",
+  },
+  {
+    question: "What is hadra, and is it permissible?",
+    href: "/faq/what-is-hadra",
+  },
 ];
 
 export default function Home() {
@@ -129,7 +148,7 @@ export default function Home() {
               }}
             >
               Accessible explanations of the concepts that matter most —
-              bid&rsquo;a, mawlid, dhikr, tasawwuf, and the scholarly tradition —
+              bid&rsquo;a, mawlid, dhikr, tasawwuf, music, and the scholarly tradition —
               grounded in fourteen centuries of scholarship.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

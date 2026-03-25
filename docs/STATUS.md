@@ -38,6 +38,11 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 - Scholar profile pages: `/scholars` index and `/scholars/[slug]` (39 figures), wired in `content.ts`, sitemap, header ("Scholars"), sidebar ("Scholar profiles"), topic nav label "Tradition" for scholarly-tradition
 - In-article links from topics/FAQs to scholar profiles; `ScholarQuote` optional `scholarSlug`; `MisconceptionBlock` accepts `ReactNode` for rich responses
 - Generator script `scripts/generate-scholar-mdx.mjs` (re-run to regenerate stubs; edit MDX by hand for updates)
+- New topic: Music, Nasheeds & the Duff (`/topics/music-nasheeds`) — instruments, duff exception, nasheeds conditions, minority opinion, Salafi rebuttal
+- 6 new FAQs: Are nasheeds allowed, Are instruments haram, What is the duff, Did Ibn Mas'ud prohibit group dhikr, Can I say Ya Muhammad, What is hadra
+- Expanded dhikr topic with hadra section and Ibn Mas'ud narration response
+- Expanded tawassul FAQ with Ya Muhammad section, dead-for-help distinctions, and additional SeekersGuidance sources
+- Updated homepage (8 topics, 11 FAQs), header nav (Music link), sidebar (Music & Nasheeds + 6 new FAQ links)
 
 ## What's in progress
 
@@ -57,6 +62,7 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 | Date | What changed | Files touched |
 |------|-------------|---------------|
+| 2026-03-25 | Music & Nasheeds topic, 6 new FAQs, expanded dhikr + tawassul, nav/homepage updates | 20+ files |
 | 2026-03-24 | Scholar profiles (39), routes, nav, sitemap, cross-links in MDX, ScholarQuote/MisconceptionBlock | 60+ files |
 | 2026-03-24 | Full content for all topics and FAQs, 6 new FAQ entries, nav updates | 15+ files |
 | 2026-03-24 | FAQ index, canonical URLs, progress bar, Framer Motion hero, polish | 10+ files |

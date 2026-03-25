@@ -9,6 +9,7 @@ const topics = [
   { label: "Dhikr", href: "/topics/dhikr" },
   { label: "Tasawwuf", href: "/topics/tasawwuf" },
   { label: "Madhabs", href: "/topics/madhabs" },
+  { label: "Music & Nasheeds", href: "/topics/music-nasheeds" },
   { label: "Isnad", href: "/topics/isnad" },
   { label: "Tradition", href: "/topics/scholarly-tradition" },
 ];
@@ -25,6 +26,12 @@ const faqs = [
   { label: "Is taqlid allowed?", href: "/faq/is-taqlid-allowed" },
   { label: "Can you visit graves?", href: "/faq/can-you-visit-graves" },
   { label: "Is salawat a bid'a?", href: "/faq/is-salawat-bidah" },
+  { label: "Are nasheeds allowed?", href: "/faq/are-nasheeds-allowed" },
+  { label: "Are instruments haram?", href: "/faq/are-instruments-haram" },
+  { label: "What is the duff?", href: "/faq/what-is-the-duff" },
+  { label: "Can I say Ya Muhammad?", href: "/faq/can-i-say-ya-muhammad" },
+  { label: "What is hadra?", href: "/faq/what-is-hadra" },
+  { label: "Did Ibn Mas'ud ban dhikr?", href: "/faq/did-ibn-masud-prohibit-group-dhikr" },
 ];
 
 export default function Sidebar() {

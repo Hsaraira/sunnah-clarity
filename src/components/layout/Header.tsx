@@ -11,6 +11,7 @@ const topics = [
   { label: "Dhikr", href: "/topics/dhikr" },
   { label: "Tasawwuf", href: "/topics/tasawwuf" },
   { label: "Madhabs", href: "/topics/madhabs" },
+  { label: "Music", href: "/topics/music-nasheeds" },
   { label: "Isnad", href: "/topics/isnad" },
   { label: "Tradition", href: "/topics/scholarly-tradition" },
 ];
