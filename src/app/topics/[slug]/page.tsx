@@ -59,7 +59,7 @@ export default async function TopicPage({
         })}
       />
       <Header />
-      <ThreeColumnLayout>
+      <ThreeColumnLayout contentType="topic" currentTopic={slug}>
         <article>
           <header className="mb-10">
             <p

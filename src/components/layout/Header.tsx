@@ -5,15 +5,12 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import SearchDialog from "@/components/search/SearchDialog";
 
-const topics = [
-  { label: "Bid'a", href: "/topics/bidah" },
-  { label: "Mawlid", href: "/topics/mawlid" },
-  { label: "Dhikr", href: "/topics/dhikr" },
-  { label: "Tasawwuf", href: "/topics/tasawwuf" },
-  { label: "Madhabs", href: "/topics/madhabs" },
-  { label: "Music", href: "/topics/music-nasheeds" },
-  { label: "Isnad", href: "/topics/isnad" },
-  { label: "Tradition", href: "/topics/scholarly-tradition" },
+const navItems = [
+  { label: "Topics", href: "/topics" },
+  { label: "Questions", href: "/faq" },
+  { label: "Scholars", href: "/scholars" },
+  { label: "Daily Dhikr", href: "/dhikr/daily" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Header() {
@@ -36,37 +33,23 @@ export default function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {topics.map((topic) => (
+            {navItems.map((item) => (
               <Link
-                key={topic.href}
-                href={topic.href}
-                className="nav-link-hover px-3 py-2 text-sm font-medium rounded-md no-underline"
-                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+                key={item.href}
+                href={item.href}
+                className={`nav-link-hover px-3 py-2 text-sm font-medium rounded-md no-underline`}
+                style={{
+                  color: item.label === "Daily Dhikr"
+                    ? "var(--color-secondary)"
+                    : item.label === "About"
+                      ? "var(--text-muted)"
+                      : "var(--text-secondary)",
+                  fontFamily: "var(--font-inter), system-ui, sans-serif",
+                }}
               >
-                {topic.label}
+                {item.label}
               </Link>
             ))}
-            <Link
-              href="/scholars"
-              className="nav-link-hover ml-1 px-3 py-2 text-sm font-medium rounded-md no-underline"
-              style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-            >
-              Scholars
-            </Link>
-            <Link
-              href="/dhikr/daily"
-              className="nav-link-hover ml-1 px-3 py-2 text-sm font-medium rounded-md no-underline"
-              style={{ color: "var(--color-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-            >
-              Daily Dhikr
-            </Link>
-            <Link
-              href="/about"
-              className="ml-1 px-3 py-2 text-sm font-medium rounded-md transition-colors no-underline"
-              style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-            >
-              About
-            </Link>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -74,17 +57,17 @@ export default function Header() {
             <ThemeToggle />
             <button
               className="md:hidden p-2 rounded-md"
-            style={{ color: "var(--text-primary)" }}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileOpen}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              {mobileOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
+              style={{ color: "var(--text-primary)" }}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileOpen}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                {mobileOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </button>
           </div>
@@ -93,41 +76,22 @@ export default function Header() {
         {mobileOpen && (
           <nav className="md:hidden pb-4 border-t" style={{ borderColor: "var(--border-default)" }}>
             <div className="flex flex-col gap-1 pt-2">
-              {topics.map((topic) => (
+              {navItems.map((item) => (
                 <Link
-                  key={topic.href}
-                  href={topic.href}
+                  key={item.href}
+                  href={item.href}
                   className="px-3 py-2 text-sm font-medium rounded-md no-underline"
-                  style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+                  style={{
+                    color: item.label === "Daily Dhikr"
+                      ? "var(--color-secondary)"
+                      : "var(--text-secondary)",
+                    fontFamily: "var(--font-inter), system-ui, sans-serif",
+                  }}
                   onClick={() => setMobileOpen(false)}
                 >
-                  {topic.label}
+                  {item.label}
                 </Link>
               ))}
-              <Link
-                href="/scholars"
-                className="px-3 py-2 text-sm font-medium rounded-md no-underline"
-                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-                onClick={() => setMobileOpen(false)}
-              >
-                Scholars
-              </Link>
-              <Link
-                href="/dhikr/daily"
-                className="px-3 py-2 text-sm font-medium rounded-md no-underline"
-                style={{ color: "var(--color-secondary)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-                onClick={() => setMobileOpen(false)}
-              >
-                Daily Dhikr
-              </Link>
-              <Link
-                href="/about"
-                className="px-3 py-2 text-sm font-medium rounded-md no-underline"
-                style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-                onClick={() => setMobileOpen(false)}
-              >
-                About
-              </Link>
             </div>
           </nav>
         )}

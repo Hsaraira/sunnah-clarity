@@ -115,6 +115,23 @@ export function getAllFAQs(): ContentMeta<FAQFrontmatter>[] {
     .filter((faq) => faq.frontmatter.status === "published");
 }
 
+export function getFAQsByTopic(topic: string): ContentMeta<FAQFrontmatter>[] {
+  return getAllFAQs().filter(
+    (faq) => faq.frontmatter.topic === topic
+  );
+}
+
+export function getFAQsGroupedByTopic(): Record<string, ContentMeta<FAQFrontmatter>[]> {
+  const faqs = getAllFAQs();
+  const grouped: Record<string, ContentMeta<FAQFrontmatter>[]> = {};
+  for (const faq of faqs) {
+    const topic = faq.frontmatter.topic;
+    if (!grouped[topic]) grouped[topic] = [];
+    grouped[topic].push(faq);
+  }
+  return grouped;
+}
+
 export function getAllScholarSlugs(): string[] {
   return getContentFiles("scholars").map((f) =>
     f.replace(/\.mdx?$/, "")

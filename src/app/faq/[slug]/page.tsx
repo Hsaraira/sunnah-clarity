@@ -59,7 +59,7 @@ export default async function FAQPage({
         })}
       />
       <Header />
-      <ThreeColumnLayout>
+      <ThreeColumnLayout contentType="faq" currentTopic={faq.frontmatter.topic}>
         <article>
           <header className="mb-10">
             <p

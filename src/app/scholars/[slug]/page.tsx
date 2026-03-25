@@ -59,7 +59,7 @@ export default async function ScholarPage({
         })}
       />
       <Header />
-      <ThreeColumnLayout>
+      <ThreeColumnLayout contentType="scholar">
         <article>
           <header className="mb-10">
             <p

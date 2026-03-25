@@ -1,14 +1,5 @@
 import Link from "next/link";
-
-const topicLinks = [
-  { label: "Bid'a (Innovation)", href: "/topics/bidah" },
-  { label: "Mawlid", href: "/topics/mawlid" },
-  { label: "Dhikr", href: "/topics/dhikr" },
-  { label: "Tasawwuf", href: "/topics/tasawwuf" },
-  { label: "Madhabs", href: "/topics/madhabs" },
-  { label: "Chains of Narration", href: "/topics/isnad" },
-  { label: "Scholars", href: "/topics/scholarly-tradition" },
-];
+import { TOPICS } from "@/lib/navigation";
 
 export default function Footer() {
   return (
@@ -43,14 +34,14 @@ export default function Footer() {
               Topics
             </h4>
             <ul className="space-y-2">
-              {topicLinks.map((link) => (
-                <li key={link.href}>
+              {TOPICS.map((topic) => (
+                <li key={topic.href}>
                   <Link
-                    href={link.href}
+                    href={topic.href}
                     className="text-sm no-underline transition-colors"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    {link.label}
+                    {topic.label}
                   </Link>
                 </li>
               ))}
@@ -67,20 +58,38 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/about"
-                  className="text-sm no-underline transition-colors"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  About & Methodology
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/faq"
                   className="text-sm no-underline transition-colors"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   Common Questions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/scholars"
+                  className="text-sm no-underline transition-colors"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Scholars
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dhikr/daily"
+                  className="text-sm no-underline transition-colors"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Daily Dhikr
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-sm no-underline transition-colors"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  About & Methodology
                 </Link>
               </li>
               <li>
