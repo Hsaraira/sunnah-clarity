@@ -1,6 +1,6 @@
 # Sunnah Clarity — Project Status
 
-> Last updated: 2026-03-24
+> Last updated: 2026-03-25
 
 ## Current phase
 
@@ -50,7 +50,7 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 ## What's next
 
-- Custom domain setup (sunnahclarity.org)
+- Custom domain setup (sunnahclarity.com — DNS in progress, SSL provisioning)
 - Self-hosted WOFF2 fonts (optional — next/font/google works well)
 - Additional FAQ entries as new questions arise
 
@@ -62,6 +62,7 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 | Date | What changed | Files touched |
 |------|-------------|---------------|
+| 2026-03-25 | Deep content expansion: all 14 thin FAQs rewritten with full hadith Arabic/English, Quran verses, ScholarQuotes, MisconceptionBlocks; expanded isnad, scholarly-tradition, music-nasheeds topics | 17 files |
 | 2026-03-25 | Music & Nasheeds topic, 6 new FAQs, expanded dhikr + tawassul, nav/homepage updates | 20+ files |
 | 2026-03-24 | Scholar profiles (39), routes, nav, sitemap, cross-links in MDX, ScholarQuote/MisconceptionBlock | 60+ files |
 | 2026-03-24 | Full content for all topics and FAQs, 6 new FAQ entries, nav updates | 15+ files |
