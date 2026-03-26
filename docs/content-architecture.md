@@ -220,3 +220,58 @@ When an FAQ grows beyond 1500 words and covers more than one sub-question, it ma
 
 ### When two pages overlap too much
 If a Topic and its FAQ share more than 50% of the same evidence/arguments, consolidate: make the Topic the canonical deep reference and trim the FAQ to a short answer + link.
+
+## HadithBlock authoring standards
+
+Every `<HadithBlock>` for a Prophetic hadith (from the Prophet ﷺ) or Sahaba narration (Companion saying) **must** include:
+
+### 1. Arabic text (`arabic` prop)
+
+Include the Arabic of the core statement being quoted — typically the Prophet's ﷺ words, the Companion's words, or the key phrase the translation hinges on. Not required for long narrative hadiths where only the outcome/ruling is being cited.
+
+```mdx
+<HadithBlock
+  arabic="مَنْ قَالَ سُبْحَانَ اللهِ وَبِحَمْدِهِ فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاهُ"
+  translation="Whoever says 'SubhanAllah wa bihamdihi' one hundred times a day..."
+  source="Sahih al-Bukhari, no. 6405; Sahih Muslim, no. 2691"
+  sourceUrl="https://sunnah.com/bukhari:6405"
+/>
+```
+
+If you cannot find the Arabic text of a hadith with confidence, **leave the `arabic` prop out entirely** rather than guess. Never fabricate or approximate Arabic text.
+
+### 2. sunnah.com source link (`sourceUrl` prop)
+
+Use the `https://sunnah.com/collection:number` format. Verified collection identifiers:
+
+| Collection | Identifier |
+|---|---|
+| Sahih al-Bukhari | `bukhari` |
+| Sahih Muslim | `muslim` |
+| Sunan Abu Dawud | `abudawud` |
+| Jami' al-Tirmidhi | `tirmidhi` |
+| Sunan al-Nasa'i | `nasai` |
+| Sunan Ibn Majah | `ibnmajah` |
+| Musnad Ahmad | `ahmad` |
+| Muwatta Malik | `malik` |
+| Riyad al-Salihin | `riyadussalihin` |
+
+Example: `sourceUrl="https://sunnah.com/tirmidhi:3377"`
+
+**If the hadith is not in any of the above collections** (e.g., it's from al-Bayhaqi, Ibn Hibban, or a tafsir work), omit `sourceUrl` and cite the source clearly in the `source` prop.
+
+**If you are unsure of the hadith number**, look it up at [sunnah.com](https://sunnah.com) by searching for key words from the translation. Only add `sourceUrl` once you have verified the link resolves to the correct hadith.
+
+### 3. Precise source citation
+
+The `source` prop must include the collection name and hadith number (not just "Sahih al-Bukhari"). Example: `"Sahih al-Bukhari, no. 6405; Sahih Muslim, no. 2691"`
+
+For hadiths graded by scholars, note the grade: `"Sunan al-Tirmidhi, no. 3377; graded sahih by al-Albani"`
+
+### Summary checklist for every new HadithBlock
+
+- [ ] Arabic text included (or omitted with reason if unverifiable)
+- [ ] `source` includes collection name AND hadith number
+- [ ] `sourceUrl` links to verified sunnah.com URL
+- [ ] `narrator` included if known (especially for Sahih Muslim / Bukhari chains)
+- [ ] Translation accurately reflects the Arabic
