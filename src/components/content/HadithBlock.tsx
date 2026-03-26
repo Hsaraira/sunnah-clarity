@@ -2,7 +2,6 @@ interface HadithBlockProps {
   arabic?: string;
   translation: string;
   source: string;
-  sourceUrl?: string;
   narrator?: string;
 }
 
@@ -10,7 +9,6 @@ export default function HadithBlock({
   arabic,
   translation,
   source,
-  sourceUrl,
   narrator,
 }: HadithBlockProps) {
   return (
@@ -50,18 +48,7 @@ export default function HadithBlock({
           className="text-xs not-italic"
           style={{ color: "var(--text-muted)" }}
         >
-          {sourceUrl ? (
-            <a
-              href={sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:opacity-80 transition-opacity"
-            >
-              {source}
-            </a>
-          ) : (
-            source
-          )}
+          {source}
         </cite>
       </footer>
     </blockquote>
