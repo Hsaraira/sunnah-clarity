@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Scholar Lineage Data — Scholarly consensus on bid'a hasana
  *
  * Slugs correspond to existing content/scholars/*.mdx files.
@@ -130,8 +130,8 @@ export const SCHOLAR_LINEAGE: ScholarEntry[] = [
     madhab: "Hanafi",
     position: "affirmed",
     role: "Founder of the Hanafi school; the Greatest Imam (al-Imam al-A'zam)",
-    bidaStatement: "Whatever serves a sound religious purpose and is not contrary to established principles is permitted or praiseworthy. The criterion is alignment with the objectives of Sacred Law, not mere novelty.",
-    source: "Principle operative throughout Hanafi fiqh; attributed via al-Kasani, Bada'i' al-Sana'i'",
+    bidaStatement: "No direct statement on bid'a categories survives from Abu Hanifa. However, his school's methodology — istihsan (juristic preference) and attention to maslaha (public interest) — inherently supports evaluating new practices by their alignment with Sacred Law rather than rejecting them for mere novelty. His students and the later Hanafi authorities unanimously adopted the five-category framework.",
+    source: "Methodology documented in al-Kasani, Bada'i' al-Sana'i'; codified by Ibn Abidin, Radd al-Muhtar, vol. 1",
   },
   {
     name: "Al-Badr al-Ayni",
@@ -186,8 +186,8 @@ export const SCHOLAR_LINEAGE: ScholarEntry[] = [
     madhab: "Maliki",
     position: "affirmed",
     role: "Founder of the Maliki school; Imam of Medina",
-    bidaStatement: "Whatever the later generations do that is good — and that the early generations did not do — is not necessarily blameworthy, as long as it does not contradict the Sunnah.",
-    source: "Attributed via al-Qarafi, al-Furuq; operative in Maliki doctrine of maslaha mursala",
+    bidaStatement: "No direct statement on bid'a categories survives from Imam Malik. His school's distinctive principle of maslaha mursala (unrestricted public interest) provides the juristic basis for accepting beneficial new practices not explicitly addressed by primary texts. His later authorities — al-Qarafi, al-Zurqani, and others — unanimously adopted the five-category framework, grounding it in his methodology.",
+    source: "Methodology documented in al-Qarafi, al-Furuq, vol. 4; al-Zurqani, Sharh al-Muwatta'",
   },
   {
     name: "Al-Qarafi",
@@ -221,7 +221,7 @@ export const SCHOLAR_LINEAGE: ScholarEntry[] = [
     position: "affirmed",
     role: "Prolific Hanbali scholar; author of over 300 works in hadith and preaching",
     bidaStatement: "Not every newly introduced matter is condemned. What is condemned is what contradicts the Sunnah. As for whatever good is newly introduced that does not contradict the Sunnah, it is permissible.",
-    source: "Talbis Iblis; al-Muntazam fi Tarikh al-Muluk wa al-Umam",
+    source: "al-Muntazam fi Tarikh al-Muluk wa al-Umam; cf. his discussion of Umar's tarawih in the same work",
   },
   // DISSENTING VOICES
   {

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -330,11 +330,15 @@ function StatsBar() {
   const affirmedCount = SCHOLAR_LINEAGE.filter(
     (s) => s.position === "affirmed"
   ).length;
+  const dissenterCount = DISSENTING_SCHOLARS.length;
+  const centuries = [...new Set(SCHOLAR_LINEAGE.map((s) => s.centuryAH))];
+  const centurySpan = Math.max(...centuries) - Math.min(...centuries) + 1;
+  const schoolCount = new Set(SCHOLAR_LINEAGE.map((s) => s.madhab)).size;
   const stats = [
     { value: `${affirmedCount}`, label: "scholars affirming" },
-    { value: "4", label: "schools of law" },
-    { value: "12", label: "centuries of consensus" },
-    { value: "2", label: "noted dissenters" },
+    { value: `${schoolCount}`, label: "schools of law" },
+    { value: `${centurySpan}`, label: "centuries spanned" },
+    { value: `${dissenterCount}`, label: "noted dissenters" },
   ];
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
@@ -405,8 +409,8 @@ function DissentingNote() {
         honesty requires acknowledging the strongest contrary voices. Their
         positions are represented accurately — including Ibn Taymiyya&apos;s
         own acknowledgment that practitioners of the mawlid receive reward for
-        their intention and veneration. The existence of two dissenters within
-        a tradition of {affirmedCount} affirming scholars across all four
+        their intention and veneration. The existence of {DISSENTING_SCHOLARS.length} dissenters
+        within a tradition of {affirmedCount} affirming scholars across all four
         schools confirms rather than undermines the mainstream position.
       </p>
     </div>
@@ -431,7 +435,7 @@ export default function ScholarLineage() {
               color: "var(--text-muted)",
             }}
           >
-            Click any card to read the scholar&rsquo;s own words.
+            Click any card to read the scholar&rsquo;s position, cited to source.
           </p>
           <ViewToggle mode={view} onChange={setView} />
         </div>

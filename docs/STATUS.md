@@ -46,7 +46,7 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 ## What's in progress
 
-(Nothing actively in progress.)
+- Content verification audit of scholar lineage data against new verification protocol
 
 ## What's next
 
@@ -66,6 +66,7 @@ Phase 1 — Feature Complete (all pages live, all features operational)
 
 | Date | What changed | Files touched |
 |------|-------------|---------------|
+| 2026-04-02 | Content verification protocol added to ARCHITECTURE.md; scholar lineage data hardened (Abu Hanifa/Malik honest indirect attributions, Ibn al-Jawzi source fix, dynamic stats, "cited to source" language); decision logged | 4 files |
 | 2026-04-02 | Scholar lineage visual page at /scholars/lineage: madhab-column layout (By School / By Century toggle), 19 affirmed scholars across 4 schools spanning 12 centuries, 2 honest dissenters, Framer Motion entrance animation, expandable quote cards, stats bar | 4 new files, 2 updated |
 | 2026-04-02 | Content persuasion overhaul: bid'a (methodology section, MisconceptionBlocks, steel-manned Salafi counters for Umar/Muslim 1017), mawlid (Abu Lahab caveat, full Ibn Taymiyya context, 'combination is bid'a' rebuttal), dhikr (removed hadra, named scholars on Ibn Mas'ud, organic-to-structured bridge), softened adversarial framing across all three | 3 files |
 | 2026-03-25 | IA refactor phase 2: TOPIC_REGISTRY as single source of truth, slug-based canonical keys, featured field, build-time validation, contextual sidebar, topics hub, grouped FAQ index, content-architecture.md | 31+ files |

@@ -64,6 +64,16 @@ Record architecture and design decisions here. Never leave rationale only in cha
 
 ---
 
+### Decision: Content verification protocol — no unverified religious claims
+- **Date:** 2026-04-02
+- **Context:** The scholar lineage page contains 19+ scholar entries with quotes and source citations. Some entries had indirect attributions (e.g., Abu Hanifa "attributed via al-Kasani") that could be challenged as fabricated. The site's credibility depends on every claim being verifiable. User requested that verification requirements be baked into project documentation so AI agents enforce them automatically, rather than relying on per-session prompts.
+- **Options considered:** (1) Verbal instruction each session, (2) Cursor rule only, (3) Full protocol in ARCHITECTURE.md
+- **Decision:** Full content verification protocol added to `docs/ARCHITECTURE.md`. Every scholar entry must have a direct quote or honest indirect attribution, specific source citation (book + volume), and SeekersGuidance or primary source verification. Unverifiable content must be flagged or removed.
+- **Rationale:** A site arguing for the scholarly tradition cannot afford to be caught with a fabricated or unverifiable quote. One exposed error undermines the entire page. The protocol must be architectural — enforced by documentation that every AI agent reads at session start — not dependent on user memory.
+- **Consequences:** Some existing entries (Abu Hanifa, Imam Malik) may need to be revised or downgraded to honest indirect attributions. New scholar entries require verification before addition. AI agents must search SeekersGuidance and primary sources before adding religious content.
+
+---
+
 ### Decision: Navy + gold + green color palette
 - **Date:** 2026-03-24
 - **Context:** Needed a color system that is culturally resonant with Islamic visual tradition while feeling modern and trustworthy.
