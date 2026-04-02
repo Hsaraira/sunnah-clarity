@@ -58,6 +58,34 @@ export function faqPageJsonLd(
   };
 }
 
+export function scholarlyArticleJsonLd({
+  title,
+  description,
+  url,
+}: {
+  title: string;
+  description: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    headline: title,
+    description,
+    url,
+    publisher: {
+      "@type": "Organization",
+      name: "Sunnah Clarity",
+      url: "https://sunnahclarity.com",
+    },
+    about: {
+      "@type": "Thing",
+      name: "Bid'a (Innovation in Islam)",
+    },
+    inLanguage: "en",
+  };
+}
+
 export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",

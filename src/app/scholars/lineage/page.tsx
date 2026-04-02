@@ -1,8 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import GeometricPattern from "@/components/decorative/GeometricPattern";
 import ScholarLineage from "@/components/content/ScholarLineage";
+import JsonLd, { scholarlyArticleJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "The Scholarly Consensus on Innovation",
@@ -14,6 +15,14 @@ export const metadata: Metadata = {
 export default function ScholarLineagePage() {
   return (
     <>
+      <JsonLd
+        data={scholarlyArticleJsonLd({
+          title: "The Scholarly Tradition on Innovation",
+          description:
+            "Scholars from all four schools of Islamic law who affirmed that bid'a admits of good and blameworthy categories.",
+          url: "https://sunnahclarity.com/scholars/lineage",
+        })}
+      />
       <Header />
       <main className="relative min-h-[70vh]">
         <GeometricPattern className="opacity-[0.04]" />

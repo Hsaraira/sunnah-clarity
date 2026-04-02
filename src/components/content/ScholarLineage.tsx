@@ -9,18 +9,25 @@ import {
   DISSENTING_SCHOLARS,
   MADHAB_ORDER,
   MADHAB_META,
+  SEEKERS_GUIDANCE_LINKS,
   centuryLabel,
   type Madhab,
   type ScholarEntry,
 } from "@/lib/scholar-lineage-data";
 
-const ALL_CENTURIES = [...new Set(SCHOLAR_LINEAGE.map((s) => s.centuryAH))].sort(
-  (a, b) => a - b
-);
+const ALL_CENTURIES = [
+  ...new Set(SCHOLAR_LINEAGE.map((s) => s.centuryAH)),
+].sort((a, b) => a - b);
 
 // ── Scholar Card ──────────────────────────────────────────────────────────────
 
-function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number }) {
+function ScholarCard({
+  scholar,
+  index,
+}: {
+  scholar: ScholarEntry;
+  index: number;
+}) {
   const [open, setOpen] = useState(false);
   const meta = MADHAB_META[scholar.madhab];
   const isDissenting = scholar.position === "dissenting";
@@ -45,7 +52,6 @@ function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number 
         }}
       >
         <div className="flex items-start gap-2.5">
-          {/* Dot indicator */}
           <span
             aria-hidden
             style={{
@@ -103,6 +109,15 @@ function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number 
               )}
             </div>
             <p
+              className="text-xs mt-0.5"
+              style={{
+                color: "var(--text-muted)",
+                fontFamily: "var(--font-inter), system-ui, sans-serif",
+              }}
+            >
+              {scholar.city}
+            </p>
+            <p
               className="text-xs mt-1 leading-relaxed"
               style={{
                 color: "var(--text-secondary)",
@@ -132,6 +147,21 @@ function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number 
                 >
                   {scholar.source}
                 </p>
+                {scholar.verifyUrl && (
+                  <a
+                    href={scholar.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-block text-xs mt-2 hover:underline"
+                    style={{
+                      color: "var(--color-primary)",
+                      fontFamily: "var(--font-inter), system-ui, sans-serif",
+                    }}
+                  >
+                    Verify on SeekersGuidance →
+                  </a>
+                )}
               </div>
             )}
           </div>
@@ -311,8 +341,7 @@ function ViewToggle({
             fontFamily: "var(--font-inter), system-ui, sans-serif",
             background:
               mode === opt.value ? "var(--color-primary)" : "transparent",
-            color:
-              mode === opt.value ? "#fff" : "var(--text-secondary)",
+            color: mode === opt.value ? "#fff" : "var(--text-secondary)",
             border: "none",
             cursor: "pointer",
           }}
@@ -407,12 +436,131 @@ function DissentingNote() {
       >
         Imam al-Shatibi and Ibn Taymiyya are included because intellectual
         honesty requires acknowledging the strongest contrary voices. Their
-        positions are represented accurately — including Ibn Taymiyya&apos;s
-        own acknowledgment that practitioners of the mawlid receive reward for
-        their intention and veneration. The existence of {DISSENTING_SCHOLARS.length} dissenters
-        within a tradition of {affirmedCount} affirming scholars across all four
-        schools confirms rather than undermines the mainstream position.
+        positions are represented accurately — including Ibn Taymiyya&apos;s own
+        acknowledgment that practitioners of the mawlid receive reward for their
+        intention and veneration. The existence of {DISSENTING_SCHOLARS.length}{" "}
+        dissenters within a tradition of {affirmedCount} affirming scholars
+        across all four schools confirms rather than undermines the mainstream
+        position.
       </p>
+    </div>
+  );
+}
+
+// ── Methodology Note ──────────────────────────────────────────────────────────
+
+function MethodologyNote() {
+  const cities = [...new Set(SCHOLAR_LINEAGE.map((s) => s.city.split(" / ")[0].split(", ")[0]))];
+  const verifiedCount = SCHOLAR_LINEAGE.filter((s) => s.verifyUrl).length;
+
+  return (
+    <div
+      className="mt-6 rounded-lg p-5"
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-default)",
+      }}
+    >
+      <h3
+        className="text-sm font-semibold mb-2"
+        style={{
+          fontFamily: "var(--font-playfair), Georgia, serif",
+          color: "var(--text-primary)",
+        }}
+      >
+        How these scholars were selected
+      </h3>
+      <p
+        className="text-sm leading-relaxed"
+        style={{
+          fontFamily: "var(--font-newsreader), Georgia, serif",
+          color: "var(--text-secondary)",
+        }}
+      >
+        Inclusion criteria: each scholar must be a recognized major authority
+        within their school of law, and their position on bid&apos;a
+        classification must be traceable to a named primary source (book title
+        and section). Where a founder&apos;s direct statement does not survive,
+        this is stated explicitly — their inclusion reflects their school&apos;s
+        established methodology as codified by later authorities. {verifiedCount}{" "}
+        of {SCHOLAR_LINEAGE.length} entries link to a SeekersGuidance article
+        that references the scholar or their position; the remainder are verified
+        against well-known classical texts that are independently checkable.
+        This page does not claim to be exhaustive — scholars are included where
+        a verifiable position statement exists. Absence from a particular century
+        reflects gaps in our current sourcing, not absence of scholarly opinion.
+      </p>
+      <p
+        className="text-xs mt-3"
+        style={{
+          color: "var(--text-muted)",
+          fontFamily: "var(--font-inter), system-ui, sans-serif",
+        }}
+      >
+        Geographic span: {cities.slice(0, 8).join(", ")}
+        {cities.length > 8 ? `, and ${cities.length - 8} more` : ""}.
+      </p>
+    </div>
+  );
+}
+
+// ── Explore Further ───────────────────────────────────────────────────────────
+
+function ExploreFurther() {
+  return (
+    <div className="mt-6">
+      <h3
+        className="text-sm font-semibold mb-4"
+        style={{
+          fontFamily: "var(--font-playfair), Georgia, serif",
+          color: "var(--text-primary)",
+        }}
+      >
+        Explore further on SeekersGuidance
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {SEEKERS_GUIDANCE_LINKS.map((link) => (
+          <a
+            key={link.url}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group rounded-lg p-4 no-underline transition-colors"
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-default)",
+            }}
+          >
+            <p
+              className="text-sm font-semibold group-hover:underline mb-1"
+              style={{
+                fontFamily: "var(--font-playfair), Georgia, serif",
+                color: "var(--text-primary)",
+              }}
+            >
+              {link.title}
+            </p>
+            <p
+              className="text-xs mb-2"
+              style={{
+                color: "var(--color-accent)",
+                fontFamily: "var(--font-inter), system-ui, sans-serif",
+              }}
+            >
+              {link.author}
+            </p>
+            <p
+              className="text-xs leading-relaxed"
+              style={{
+                color: "var(--text-secondary)",
+                fontFamily: "var(--font-newsreader), Georgia, serif",
+              }}
+            >
+              {link.description}
+            </p>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
@@ -435,12 +583,12 @@ export default function ScholarLineage() {
               color: "var(--text-muted)",
             }}
           >
-            Click any card to read the scholar&rsquo;s position, cited to source.
+            Click any card to read the scholar&rsquo;s position, cited to
+            source.
           </p>
           <ViewToggle mode={view} onChange={setView} />
         </div>
 
-        {/* Column headers pinned above the century view */}
         {view === "century" && (
           <div className="hidden lg:grid lg:grid-cols-4 gap-3 mb-1">
             {MADHAB_ORDER.map((m) => (
@@ -469,6 +617,8 @@ export default function ScholarLineage() {
         </m.div>
 
         <DissentingNote />
+        <MethodologyNote />
+        <ExploreFurther />
       </div>
     </LazyMotion>
   );
