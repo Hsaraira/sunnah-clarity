@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -89,7 +89,7 @@ export default function Sidebar({
             className="block mt-2 px-3 text-xs no-underline"
             style={{ color: "var(--text-muted)", fontFamily: "var(--font-inter), system-ui, sans-serif" }}
           >
-            View all questions →
+            View all questions â†’
           </Link>
         </div>
       )}
