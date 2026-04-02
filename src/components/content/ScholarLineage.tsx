@@ -14,48 +14,52 @@ import {
   type ScholarEntry,
 } from "@/lib/scholar-lineage-data";
 
-// ── helpers ──────────────────────────────────────────────────────────────────
-
-function useThemeColor(entry: { light: string; dark: string }) {
-  // returns CSS variable reference; actual resolution happens in browser
-  return { light: entry.light, dark: entry.dark };
-}
-
 const ALL_CENTURIES = [...new Set(SCHOLAR_LINEAGE.map((s) => s.centuryAH))].sort(
   (a, b) => a - b
 );
 
-// ── Scholar Card ─────────────────────────────────────────────────────────────
+// ── Scholar Card ──────────────────────────────────────────────────────────────
 
 function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number }) {
   const [open, setOpen] = useState(false);
   const meta = MADHAB_META[scholar.madhab];
   const isDissenting = scholar.position === "dissenting";
+  const dotColor = isDissenting ? "var(--color-correction)" : meta.light;
 
   return (
     <m.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
+      transition={{ duration: 0.35, delay: index * 0.05 }}
     >
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="w-full text-left rounded-xl transition-all duration-200"
+        className="w-full text-left rounded-lg transition-colors duration-150"
         style={{
-          background: isDissenting
-            ? "var(--bg-surface)"
-            : "var(--bg-base)",
-          border: `1px solid ${isDissenting ? "var(--border-default)" : "color-mix(in srgb, var(--border-default) 60%, transparent)"}`,
-          borderLeft: `3px solid ${isDissenting ? "var(--color-correction)" : meta.light}`,
-          padding: "14px 16px",
+          background: open ? "var(--bg-surface)" : "var(--bg-base)",
+          border: "1px solid var(--border-default)",
+          padding: "12px 14px",
           cursor: "pointer",
         }}
       >
-        <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-start gap-2.5">
+          {/* Dot indicator */}
+          <span
+            aria-hidden
+            style={{
+              marginTop: 5,
+              flexShrink: 0,
+              display: "inline-block",
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              background: dotColor,
+            }}
+          />
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span
                 className="font-semibold text-sm leading-snug"
                 style={{
@@ -76,29 +80,28 @@ function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number 
                   scholar.name
                 )}
               </span>
+              <span
+                className="text-xs"
+                style={{
+                  color: "var(--text-muted)",
+                  fontFamily: "var(--font-newsreader), Georgia, serif",
+                  fontStyle: "italic",
+                }}
+              >
+                {scholar.dates}
+              </span>
               {isDissenting && (
                 <span
-                  className="text-xs px-2 py-0.5 rounded-full font-medium"
+                  className="text-xs font-medium"
                   style={{
-                    background: "rgba(184,84,80,0.1)",
                     color: "var(--color-correction)",
                     fontFamily: "var(--font-inter), system-ui, sans-serif",
                   }}
                 >
-                  dissenting
+                  · dissenting
                 </span>
               )}
             </div>
-            <p
-              className="text-xs mt-0.5"
-              style={{
-                color: "var(--text-muted)",
-                fontFamily: "var(--font-newsreader), Georgia, serif",
-                fontStyle: "italic",
-              }}
-            >
-              {scholar.dates}
-            </p>
             <p
               className="text-xs mt-1 leading-relaxed"
               style={{
@@ -108,11 +111,35 @@ function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number 
             >
               {scholar.role}
             </p>
+
+            {open && (
+              <div
+                className="mt-3 pt-3 text-sm leading-relaxed"
+                style={{
+                  borderTop: "1px solid var(--border-default)",
+                  fontFamily: "var(--font-newsreader), Georgia, serif",
+                }}
+              >
+                <blockquote
+                  className="mb-2 italic"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  &ldquo;{scholar.bidaStatement}&rdquo;
+                </blockquote>
+                <p
+                  className="text-xs"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  {scholar.source}
+                </p>
+              </div>
+            )}
           </div>
           <span
-            className="mt-0.5 flex-shrink-0 text-base leading-none transition-transform duration-200"
+            className="flex-shrink-0 text-xs transition-transform duration-200"
             style={{
               color: "var(--text-muted)",
+              marginTop: 3,
               transform: open ? "rotate(180deg)" : "rotate(0deg)",
             }}
             aria-hidden
@@ -120,42 +147,19 @@ function ScholarCard({ scholar, index }: { scholar: ScholarEntry; index: number 
             ▾
           </span>
         </div>
-
-        {open && (
-          <div
-            className="mt-3 pt-3 text-sm leading-relaxed"
-            style={{
-              borderTop: "1px solid var(--border-default)",
-              fontFamily: "var(--font-newsreader), Georgia, serif",
-            }}
-          >
-            <blockquote
-              className="mb-2 italic"
-              style={{ color: "var(--text-primary)" }}
-            >
-              &ldquo;{scholar.bidaStatement}&rdquo;
-            </blockquote>
-            <p
-              className="text-xs"
-              style={{ color: "var(--text-muted)" }}
-            >
-              Source: {scholar.source}
-            </p>
-          </div>
-        )}
       </button>
     </m.div>
   );
 }
 
-// ── Madhab Column Header ─────────────────────────────────────────────────────
+// ── Madhab Column Header ──────────────────────────────────────────────────────
 
 function MadhabHeader({ madhab, count }: { madhab: Madhab; count: number }) {
   const meta = MADHAB_META[madhab];
   return (
     <div
-      className="rounded-xl px-4 py-3 mb-4"
-      style={{ background: meta.bg, border: `1px solid ${meta.light}30` }}
+      className="mb-4 pb-3"
+      style={{ borderBottom: `2px solid ${meta.light}` }}
     >
       <div className="flex items-center justify-between">
         <span
@@ -168,10 +172,9 @@ function MadhabHeader({ madhab, count }: { madhab: Madhab; count: number }) {
           {meta.label}
         </span>
         <span
-          className="text-xs font-medium px-2 py-0.5 rounded-full"
+          className="text-xs"
           style={{
-            background: `${meta.light}18`,
-            color: meta.light,
+            color: "var(--text-muted)",
             fontFamily: "var(--font-inter), system-ui, sans-serif",
           }}
         >
@@ -182,14 +185,11 @@ function MadhabHeader({ madhab, count }: { madhab: Madhab; count: number }) {
   );
 }
 
-// ── Century Band ─────────────────────────────────────────────────────────────
+// ── Century Band ──────────────────────────────────────────────────────────────
 
 function CenturyBand({ century }: { century: number }) {
   return (
-    <div
-      className="col-span-full flex items-center gap-3 py-3 mt-2"
-      style={{ borderTop: "1px solid var(--border-default)" }}
-    >
+    <div className="flex items-center gap-3 py-3 mt-2 mb-1">
       <span
         className="text-xs font-semibold uppercase tracking-widest whitespace-nowrap"
         style={{
@@ -214,26 +214,23 @@ function ByCenturyView() {
   return (
     <div>
       {ALL_CENTURIES.map((century) => {
-        const scholarsInCentury = SCHOLAR_LINEAGE.filter(
+        const affirmedInCentury = SCHOLAR_LINEAGE.filter(
           (s) => s.centuryAH === century && s.position === "affirmed"
         );
         const dissentersInCentury = DISSENTING_SCHOLARS.filter(
           (s) => s.centuryAH === century
         );
-        if (scholarsInCentury.length === 0 && dissentersInCentury.length === 0)
+        if (affirmedInCentury.length === 0 && dissentersInCentury.length === 0)
           return null;
         return (
           <div key={century} className="mb-8">
             <CenturyBand century={century} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {MADHAB_ORDER.map((madhab) => {
-                const madhabhScholars = scholarsInCentury.filter(
-                  (s) => s.madhab === madhab
-                );
-                const madhabhDissenters = dissentersInCentury.filter(
-                  (s) => s.madhab === madhab
-                );
-                const all = [...madhabhScholars, ...madhabhDissenters];
+                const all = [
+                  ...affirmedInCentury.filter((s) => s.madhab === madhab),
+                  ...dissentersInCentury.filter((s) => s.madhab === madhab),
+                ];
                 if (all.length === 0) return <div key={madhab} />;
                 return (
                   <div key={madhab} className="flex flex-col gap-2">
@@ -257,16 +254,20 @@ function ByMadhabView() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
       {MADHAB_ORDER.map((madhab) => {
-        const scholars = SCHOLARS_BY_MADHAB[madhab];
+        const affirmed = SCHOLARS_BY_MADHAB[madhab].sort(
+          (a, b) => a.centuryAH - b.centuryAH
+        );
+        const dissenters = DISSENTING_SCHOLARS.filter(
+          (s) => s.madhab === madhab
+        );
+        const all = [...affirmed, ...dissenters];
         return (
           <div key={madhab}>
-            <MadhabHeader madhab={madhab} count={scholars.length} />
+            <MadhabHeader madhab={madhab} count={all.length} />
             <div className="flex flex-col gap-2">
-              {scholars
-                .sort((a, b) => a.centuryAH - b.centuryAH)
-                .map((s, i) => (
-                  <ScholarCard key={s.name} scholar={s} index={i} />
-                ))}
+              {all.map((s, i) => (
+                <ScholarCard key={s.name} scholar={s} index={i} />
+              ))}
             </div>
           </div>
         );
@@ -287,13 +288,16 @@ function ViewToggle({
   onChange: (m: ViewMode) => void;
 }) {
   const options: { value: ViewMode; label: string }[] = [
-    { value: "century", label: "By Century" },
     { value: "madhab", label: "By School" },
+    { value: "century", label: "By Century" },
   ];
   return (
     <div
       className="inline-flex rounded-lg p-1"
-      style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)" }}
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-default)",
+      }}
       role="group"
       aria-label="View mode"
     >
@@ -305,8 +309,10 @@ function ViewToggle({
           className="px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200"
           style={{
             fontFamily: "var(--font-inter), system-ui, sans-serif",
-            background: mode === opt.value ? "var(--color-primary)" : "transparent",
-            color: mode === opt.value ? "#fff" : "var(--text-secondary)",
+            background:
+              mode === opt.value ? "var(--color-primary)" : "transparent",
+            color:
+              mode === opt.value ? "#fff" : "var(--text-secondary)",
             border: "none",
             cursor: "pointer",
           }}
@@ -321,8 +327,9 @@ function ViewToggle({
 // ── Stats Bar ─────────────────────────────────────────────────────────────────
 
 function StatsBar() {
-  const affirmedCount = SCHOLAR_LINEAGE.filter((s) => s.position === "affirmed").length;
-  const centurySpan = `${Math.min(...SCHOLAR_LINEAGE.map((s) => s.centuryAH))}nd–${Math.max(...SCHOLAR_LINEAGE.map((s) => s.centuryAH))}th century AH`;
+  const affirmedCount = SCHOLAR_LINEAGE.filter(
+    (s) => s.position === "affirmed"
+  ).length;
   const stats = [
     { value: `${affirmedCount}`, label: "scholars affirming" },
     { value: "4", label: "schools of law" },
@@ -334,7 +341,7 @@ function StatsBar() {
       {stats.map((s) => (
         <div
           key={s.label}
-          className="rounded-xl px-4 py-4 text-center"
+          className="rounded-lg px-4 py-4 text-center"
           style={{
             background: "var(--bg-surface)",
             border: "1px solid var(--border-default)",
@@ -367,13 +374,15 @@ function StatsBar() {
 // ── Dissenting Note ───────────────────────────────────────────────────────────
 
 function DissentingNote() {
+  const affirmedCount = SCHOLAR_LINEAGE.filter(
+    (s) => s.position === "affirmed"
+  ).length;
   return (
     <div
-      className="mt-10 rounded-xl p-5"
+      className="mt-10 rounded-lg p-5"
       style={{
         background: "var(--bg-surface)",
         border: "1px solid var(--border-default)",
-        borderLeft: "3px solid var(--color-correction)",
       }}
     >
       <h3
@@ -383,7 +392,7 @@ function DissentingNote() {
           color: "var(--text-primary)",
         }}
       >
-        On the Dissenting Scholars
+        On the dissenting scholars
       </h3>
       <p
         className="text-sm leading-relaxed"
@@ -392,15 +401,13 @@ function DissentingNote() {
           color: "var(--text-secondary)",
         }}
       >
-        Imam al-Shatibi and Ibn Taymiyya are included here because intellectual
+        Imam al-Shatibi and Ibn Taymiyya are included because intellectual
         honesty requires acknowledging the strongest contrary voices. Their
-        positions are represented accurately — including Ibn Taymiyya's
-        acknowledgment that practitioners of the mawlid receive reward for
-        their intention. The existence of these two dissenters within a
-        tradition of{" "}
-        {SCHOLAR_LINEAGE.filter((s) => s.position === "affirmed").length}{" "}
-        affirming scholars across all four schools confirms rather than
-        undermines the mainstream position.
+        positions are represented accurately — including Ibn Taymiyya&apos;s
+        own acknowledgment that practitioners of the mawlid receive reward for
+        their intention and veneration. The existence of two dissenters within
+        a tradition of {affirmedCount} affirming scholars across all four
+        schools confirms rather than undermines the mainstream position.
       </p>
     </div>
   );
@@ -429,17 +436,17 @@ export default function ScholarLineage() {
           <ViewToggle mode={view} onChange={setView} />
         </div>
 
-        {/* Madhab column headers for the century view */}
+        {/* Column headers pinned above the century view */}
         {view === "century" && (
-          <div className="hidden lg:grid lg:grid-cols-4 gap-3 mb-2">
+          <div className="hidden lg:grid lg:grid-cols-4 gap-3 mb-1">
             {MADHAB_ORDER.map((m) => (
               <div
                 key={m}
-                className="text-center text-xs font-semibold uppercase tracking-widest py-2 rounded-lg"
+                className="text-center text-xs font-semibold uppercase tracking-widest py-2"
                 style={{
                   color: MADHAB_META[m].light,
-                  background: MADHAB_META[m].bg,
                   fontFamily: "var(--font-inter), system-ui, sans-serif",
+                  borderBottom: `2px solid ${MADHAB_META[m].light}`,
                 }}
               >
                 {MADHAB_META[m].label}
@@ -452,7 +459,7 @@ export default function ScholarLineage() {
           key={view}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.25 }}
+          transition={{ duration: 0.2 }}
         >
           {view === "century" ? <ByCenturyView /> : <ByMadhabView />}
         </m.div>
