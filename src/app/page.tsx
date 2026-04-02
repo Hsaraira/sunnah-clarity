@@ -112,6 +112,66 @@ export default function Home() {
                 <TopicCard key={topic.href} {...topic} />
               ))}
             </div>
+
+            {/* Scholar Consensus callout */}
+            <div className="mt-8">
+              <Link
+                href="/scholars/lineage"
+                className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-lg px-6 py-5 no-underline transition-colors"
+                style={{
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border-default)",
+                }}
+              >
+                <div className="flex items-start sm:items-center gap-4">
+                  <div
+                    className="flex-shrink-0 text-2xl leading-none"
+                    aria-hidden
+                    style={{ color: "var(--color-accent)" }}
+                  >
+                    ✦
+                  </div>
+                  <div>
+                    <p
+                      className="text-xs font-semibold uppercase tracking-widest mb-0.5"
+                      style={{
+                        color: "var(--color-accent)",
+                        fontFamily: "var(--font-inter), system-ui, sans-serif",
+                      }}
+                    >
+                      Visual overview
+                    </p>
+                    <p
+                      className="font-semibold text-sm sm:text-base group-hover:underline"
+                      style={{
+                        fontFamily: "var(--font-playfair), Georgia, serif",
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      The Scholarly Consensus on Innovation
+                    </p>
+                    <p
+                      className="text-sm mt-0.5"
+                      style={{
+                        fontFamily: "var(--font-newsreader), Georgia, serif",
+                        color: "var(--text-secondary)",
+                      }}
+                    >
+                      19 scholars · 4 schools · 12 centuries — in their own words
+                    </p>
+                  </div>
+                </div>
+                <span
+                  className="flex-shrink-0 text-sm font-medium"
+                  style={{
+                    color: "var(--color-primary)",
+                    fontFamily: "var(--font-inter), system-ui, sans-serif",
+                  }}
+                >
+                  Browse →
+                </span>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -200,7 +260,14 @@ export default function Home() {
               authentic hadith collections, and the works of classical scholars like
               Imam al-Nawawi, Ibn Hajar al-Asqalani, and al-Izz ibn Abd al-Salam.
               We present the traditional Sunni scholarly positions — the same positions
-              held by the vast majority of Muslims for over a thousand years.
+              held by the vast majority of Muslims for over a thousand years.{" "}
+              <Link
+                href="/scholars/lineage"
+                className="underline"
+                style={{ color: "var(--color-primary)" }}
+              >
+                See the full scholarly lineage →
+              </Link>
             </p>
             <p
               className="text-sm"
